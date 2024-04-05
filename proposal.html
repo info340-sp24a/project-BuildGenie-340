@@ -12,46 +12,59 @@
 <body>
     <section>
         <h2>Problem Description</h2>
-        <p> 
-            The topic of our application is personal computer (PC) building. Given the wide variety of PC components available, each type of component comes in numerous variations, 
-            featuring distinct specifications and is uniquely manufactured by various brand. This wide array of components and the incompatibility of many parts makes PC building a 
+        <p>
+            The topic of our application is personal computer (PC) building. Given the wide variety of PC components available, each type of component comes in numerous variations,
+            featuring distinct specifications and is uniquely manufactured by various brand. This wide array of components and the incompatibility of many parts makes PC building a
             confusing process for both experienced and inexperienced PC builders. Yes, you can watch hundreds of tutorials and eventually learn about each component, brand, their
-            compatibility, specifications, and how to put together a PC, but that takes hours and memorization. To avoid the confusion, many people rely on the website 
+            compatibility, specifications, and how to put together a PC, but that takes hours and memorization. To avoid the confusion, many people rely on the website
             <a href="https://pcpartpicker.com/">PC Part Picker</a> to find and select the component they want. This website allows users to select parts for their PC build,
             view PC's that other people have built themselves, and has guides to building quality PC's. However, several issues that our group discovered with this website is that it
-            does not account for the dimension of parts and does not have bottleneck detection. To avoid both the confusion and hassle of physically building a PC, many people go with 
-            pre-built PC route. This is where a manufacturer builds a complete PC that is ready for consumers to purchase. However, this route has its drawbacks. Pre-built PC's often come with 
-            a higher pricetag (compared to a self-built PC with similar components), poorer quality components, possibly lower performance, and possibly lack of customization and upgradability. 
+            can be difficult to build and compare similar configurations around a certain dollar amount and does not have bottleneck detection. To avoid both the confusion and hassle of physically building a PC, many people go with
+            pre-built PC route. This is where a manufacturer builds a complete PC that is ready for consumers to purchase. However, this route has its drawbacks. Pre-built PC's often come with
+            a higher pricetag (compared to a self-built PC with similar components), poorer quality components, possibly lower performance, and possibly lack of customization and upgradability.
         </p>
-       
     </section>
-    
+
     <section>
         <h2>App Description</h2>
         <p>
-            <p>  
-                Be sure and review the overall project requirements for more details about the scope and requirements for your project.
-                Your proposal will also contain a description of the web app that you will create to help address your chosen problem (a proposed "solution"). Think about what kind of a web app would help with this problem, and how people would use that app to make their lives better in some way. What is the "use case" or "user story"Links to an external site. for the app?
-                Remember that this app will be interactive—it will need to contain buttons, forms, etc that let the user provide some kind of input and modify how data is presented to them. Thus your app will need to do more than just be something for the user to read; it needs to give the user something to do.
-            </p>
-            <h3>Your app should also be described in 2-3 paragraphs. In particular, you should make sure to address:</h3>
-            <p>1) Who are the users of the application? That is, who will be accessing the website? What impacts might this app have on minority groups?</p>
-            <p>
-                2) What will the users do with the web app? What kind of interactive features are you expecting to provide? Remember that you app will need to include at least "two and a half" significant features; be sure to explicitly identify and explain what all of them are! Remember:
-                Remember that "viewing" information or navigating ("going to") to something isn't a feature!
-            </p>
-            <p>
-                3) What kind of information will the users be viewing? If intend to use data from an external source (a csv file or an API), include a link and citation to that data.
-                If you insist on using an API, confirm that you'll be able to access it from a client-side app by testing it at https://joelwross.github.io/cors-test/Links to an external site.. If you can't get data back from this testing site, then it won't work with your project.
-            </p>
-            <p>
-                4) How will using this app help to solve your chosen problem? That is, how is it a solution to the problem you described?
-                Remember the app doesn't need to have "business value". But as Informatics students we care about the practical usage and impacts of systems, not just their implementation. Be sure to consider that in your proposal!
-            </p>
-            
+            Our app hopes to address these problems through allowing users to both achieve the cheaper and higher-quality components of a custom-built with the reliance, peace of mind,
+            and optimization of a pre-built. Our website will target a demographic which is either a novice towards computer components or is lacking adequate knowledge towards
+            knowing which parts go optimally with other parts and avoid bottlenecks. As such, this app may not have many more features than <a href="https://pcpartpicker.com/">PC Part Picker</a>
+            has for experts in PC-building, but content and features such as already-created builds from experts using online parts and ease of customizing multiple builds to work around a budget
+            should allow for newcomers to confortably build their own PC.
         </p>
-       
-        </section>
-    
+        <p>The features that we are looking to implement are:
+            <ul>
+                <li>Custom Build Comparison</li>
+                <li>Build Guides</li>
+                <li>Part Selector and Custom PC Builder</li>
+                <li><em>(Possible)</em> Upload Custom Builds Forum</li>
+            </ul>
+        </p>
+        <p>
+            The custom build comparison feature would allow for users who sign in using their Google accounts to save their builds, with all of its information on price and performance, and easily
+            compare it side-by-side to their other custom PC builds.
+        </p>
+        <p>
+            The Build Guides would be viewable information that shows users already-created PC builds that are confirmed to work and be optimized.
+        </p>
+        <p>
+            The Part Selector and Custom PC Builder feature will be the main feature of the website. Using <a href="https://github.com/docyx/pc-part-dataset">CSV data scraped from PC Part Picker</a>,
+            we will be able to provide information on each unique component's specifications, but it will be up to us to list which parts can be compatable with
+            each other.
+        </p>
+        <p>
+            Finally, we have a possible feature which may-or-may-not be developed depending on time constraints. This forum feature would allow for users to upload their own custom builds
+            to show to others and inspire further optimizations and creativity. If users are struggling to know where to start, the forums might be a great spot to see what other users are
+            doing and putting into their builds!
+        </p>
+        <p>
+            Our website hopes to address the struggles newcomers to the PC-building world experience when trying to create their own computer. By allowing for users to quickly and effectively make builds
+            to suit their budgets, they can have the peace-of-mind of knowing that their custom build will not only work, but be significantly cheaper than simply buying a pre-built. Further, for users who
+            want to stretch their budget as far as possible, our comparison feature will allow for users to view which components match their desired performance best before buying parts. Finally, our
+            possible feature would be a great spot for users to show off their custom builds, inspire others, and show fellow users what works and does not work with certain customizations.
+        </p>
+    </section>
 </body>
 </html>
