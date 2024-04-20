@@ -79,14 +79,24 @@ nav a {
   font-size: 20px;
   font-weight: 600;
   margin-left: 30px;
-  color: white;
+  color: rgba(255, 255, 255, .70);
+  fill: white;
   text-decoration: none;
   display: flex;
   align-items: center;
 }
 
+nav a h1 {
+  color: white;
+}
+
+nav a:hover {
+  color: white;
+}
+
 nav a > img {
   margin-right: 4px;
+
 }
 
 
