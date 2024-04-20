@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <title>Search Page</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
-    <body>
+    <body >
         <nav>
             <h1 style="display: inline-block">BuildGenie</h1>
-            <div style="display: inline-block">
-                <label for="comment_field">Search:</label>
-                <textarea style="height: 1em" class="form-control" id="comment_field" name="comment"></textarea>
-            </div>
+            <a href="#Search">Search</a></li>
             <a href="#Build">Build</a></li>
             <a href="#Compare">Compare</a></li>
             <a href="#Login">Login</a></li>
         </nav>
-        <div></div>
-        <section>
-            <h3>Filter</h3>
-            <input type="checkbox" id="AMD_cpu" name="amd" value="amd">
-            <label for="AMD_cpu"> AMD</label><br>
-            <input type="checkbox" id="Intel_cpu" name="intel" value="intel">
-            <label for="Intel_cpu"> Intel</label><br>
-            <button>Apply</button>
-        </section>
-        <section>
-            <h3>Search Results</h3>
-            <p>search results for "cpu"</p>
-        </section>
+        <main class="search">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="search for parts...">
+            </div>
+            <div class="results-box">
+                <p>search results for:</p>
+            </div>
+        </main>
     </body>
 </html>
