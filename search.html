@@ -17,20 +17,27 @@
                     <a href="compare.html"><img src="img/compare-icon.svg" alt="compare"><p>Compare</p></a>
                     <a href="#Login"><img src="img/login-icon.svg" alt="login"><p>Login</p></a>
                 </ul>
-                
             </div>
-        </nav>
+        </nav> 
         <main class="search">
             <div class="search-bar">
-                <input type="text" class="search-input" placeholder="search for parts...">
+                <form>
+                    <input type="text" id="search" class="search-input" name="search" placeholder="search for parts..."><br>
+                </form>
             </div>
             <div class="results-box">
                 <p>search results for:</p>
                 <div>
                     <div class="filter-results">
-                        <div class="filter-header">
-                            <h2>Filter</h2>
+                        <div>
+                            <div class="filter-header">
+                                <h2>Filter</h2>
+                            </div>
+                            <div>
+                                <h2 class="sort-header">Sort By</h2>
+                            </div>
                         </div>
+                        
                         <div class="results">
                             <p>Empty :(</p>
                         </div>
