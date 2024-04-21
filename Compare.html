@@ -19,11 +19,26 @@
                 </ul>
             </div>
         </nav>
-        <div style="background-color: grey; display: inline-block">
-            <h1>Your Builds:</h1>
-        </div>
-        <div style="background-color: grey; display: inline-block">
-            <h1>Other Builds:</h1>
+        <section id="build-header">
+            <h1>Compare your builds</h1>
+        </section>
+        <div class="comparison-tables">
+            <div class="build-table">
+                <h2>Your Build</h2>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" id="yourBuild" class="build-checkbox"><label for="yourBuild">Your Build</label></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="build-table">
+                <h2>Comparison Build</h2>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" id="comparisonBuild" class="build-checkbox"><label for="comparisonBuild">Comparison Build</label></td>
+                    </tr>                
+                </table>
+            </div>
         </div>
     </body>
 </html>

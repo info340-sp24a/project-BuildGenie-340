@@ -272,3 +272,49 @@ nav a > img {
 .item-footer .component {
   padding-left: 20px;
 }
+
+/* wip*/
+.comparison-tables {
+  display: flex;
+  justify-content: space-around;
+}
+
+.build-table {
+  width: 45%;
+  border: 1px solid #000000;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.build-table h2 {
+  text-align: center;
+}
+
+.build-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.build-table table th,
+.build-table table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.build-table table th {
+  background-color: #f2f2f2;
+}
+
+
+/* on default we hide component info and just display all builds*/
+.component-info {
+  display: none;
+}
+
+/* when any build is checkmarked, we display the parts.
+should work for both tables once we implement functionality */
+#yourBuild:checked ~ .component-info.yourBuild,
+#comparisonBuild:checked ~ .component-info.comparisonBuild {
+  display: block;
+}
