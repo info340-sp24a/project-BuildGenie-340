@@ -246,6 +246,10 @@ nav a > img {
   transition-duration: 0.2s;
 }
 
+.Title a b {
+  font-family: 'Work Sans', sans-serif;
+}
+
 .Title a:hover {
   background-color: #0065FF; /* Complementary Color to #FF9A00 */
 }
@@ -276,8 +280,8 @@ nav a > img {
 }
 
 /* Adding spacing for the bottom of the page. */
-.PCParts:last-child {
-  margin-bottom: 50px;
+.PCParts.main {
+  margin-bottom: 75px;
 }
 
 .item {
@@ -293,4 +297,64 @@ nav a > img {
 
 .item-footer .component {
   padding-left: 20px;
+}
+
+
+.footer-top {
+  background-color: #2e3356;
+  border: 1px solid #1e2138;
+  width: 100%;
+  padding: 15px;
+  padding-left: 70px;
+}
+
+/* Save your build button */
+.footer-top button {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  background-color: #FF9A00;
+  box-shadow: 2px 2px 5px #d78100;
+  border: none;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.footer-top button:hover {
+  background-color: #e58900;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-container {
+  background-color: #1e2138;
+}
+
+.footer-main h3 {
+  font-size: 3rem;
+  padding-left: 40px;
+}
+
+.footer-main {
+  gap: 40px;
+  align-items: center;
+}
+
+.footer-main p {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.footer-main a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-bottom {
+  background-color: #1a1c2f;
+  padding: 10px 15px;
 }
