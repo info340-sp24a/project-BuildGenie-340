@@ -216,16 +216,38 @@ nav a > img {
   width: 65px;
 }
 
+/* Custom colored URL link */
 .PCParts a {
   color: #FF9A00;
 }
 
+/* Custom already-visited colored URL link */
 .PCParts a:visited {
   color: #25c3c6;
 }
 
+/* Different, constant color for ADD COMPONENT links */
+.item .Title a {
+  color: whitesmoke;
+}
+
 .item .Title {
   font-weight: bold;
+}
+
+/* ADD COMPONENT button */
+.Title a {
+  text-decoration: none;
+  background-color: #0058dc;
+  border: none;
+  padding: 6px;
+  font-size: 18px;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+}
+
+.Title a:hover {
+  background-color: #0065FF; /* Complementary Color to #FF9A00 */
 }
 
 /* Custom Button (Not using Bootstrap for Build.HTML) */
