@@ -3,19 +3,180 @@
     <head>
         <meta charset="UTF-8">
         <meta name="author" content="Group A5">
-        <title>BuildGenie: PC Building Made Simple</title>
+        <title>Build your PC - BuildGenie</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <p style="display: inline-block">BuildGenie</p>
-            <div style="display: inline-block">
-                <label for="comment_field">Search:</label>
-                <textarea style="height: 1em" class="form-control" id="comment_field" name="comment"></textarea>
+        <nav>
+            <!-- May want to change the div to header, but this would have to be a global (every HTML) change. -->
+            <div>
+                <a href="main.html"><h1><span class="colored-title">Build</span>Genie</h1></a>
+                <ul>
+                    <a href="search.html"><img src="img/search-icon.svg" alt="search"><p>Search</p></a>
+                    <a href="build.html"><img src="img/build-icon.svg" alt="build"><p>Build</p></a>
+                    <a href="compare.html"><img src="img/compare-icon.svg" alt="compare"><p>Compare</p></a>
+                    <a href="#Login"><img src="img/login-icon.svg" alt="login"><p>Login</p></a>
+                </ul>
             </div>
-        <div style="background-color: grey; display: inline-block">
-            <h1>Filter</h1>
-        </div>
-        <div style="background-color: grey; display: inline-block">
-            <h1>Search Components</h1>
-        </div>
+        </nav>
+        <section id="build-header">
+            <h1>Build your PC</h1>
+        </section>
+        <table class="PCParts">
+            <tr id="part-titles">
+                <th scope="col">Component</th>
+                <th scope="col">Product</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Link</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </table>
+        <!-- All of the PC parts -->
+        <table class="PCParts">
+            <!-- CPU -->
+            <tr class="item">
+                <th scope="row" class="component">Processor</td>
+                <td class="product">
+                    <img src='img/12700kf.jpg' alt="placeholder">
+                </td>
+                <td class="Title">Intel Core i7-12700KF 3.6 GHz 12-Core Processor</td>
+                <td class="Price">$229.99</td>
+                <td class="Link">
+                    <a href="https://www.amazon.com/Intel-i7-12700KF-Desktop-Processor-Unlocked/dp/B09FXKHN7M/ref=sr_1_3?crid=2ZYDRTPTIGVXY&dib=eyJ2IjoiMSJ9.gFM-oopmsxz4iK5MyucPq07oUHmwlTe9OubAIULJSCrwtMfeJ11k0ZeLYZUlow-PIM7pJgEyRW1HzCWyg33sI_GzbcF2Xd4eBTcsmWLlS2QX0aLhUr2C-aZ-_AMIdnsvA6ncNe6AQbyu74K-Alusdcr4GI9FykQZHzEui8O5xxK5jOg3oRF8_zc33pUZapg9eQBj4mv2jVWCBBx4fc9k1QJcx7Fb72ds8RDaIVUKaZyDU0KO6dlnTM5GJztRD7UFaC_IlzU3i1sxQnhK2qSgmWlq0LMRjzCeoRT6x2I_L4g.L5Bt3mVsRzbiS4o1fwkEVv8jgeZWP78j4RdwhRXKBPU&dib_tag=se&keywords=Intel+Core+i7-12700KF+Gaming+Desktop+Processor+12+%288P%2B4E%29+Cores+up+to+5.0+GHz+Unlocked+LGA1700+600+Series+Chipset+125W&qid=1713699232&s=electronics&sprefix=intel+core+i7-12700kf+gaming+desktop+processor+12+8p%2B4e+cores+up+to+5.0+ghz+unlocked+lga1700+600+series+chipset+125w+%2Celectronics%2C140&sr=1-3&ufe=app_do%3Aamzn1.fos.f5122f16-c3e8-4386-bf32-63e904010ad0">
+                        Buy Now
+                    </a>
+                </td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- Motherboard -->
+            <tr class="item">
+                <th scope="row" class="component">Motherboard</td>
+                <td class="product">
+                    <img src='img/MSI Z690-A.jpg' alt="placeholder">
+                </td>
+                <td class="Title">MSI PRO Z690-A WIFI ATX LGA1700 Motherboard</td>
+                <td class="Price">$148.40</td>
+                <td class="Link">
+                    <a href="https://www.amazon.com/MSI-Z690-ProSeries-Motherboard-Socket/dp/B09KKYXXQB/ref=sr_1_1?crid=2OLUUCRDW4TG4&dib=eyJ2IjoiMSJ9.t1iSFYiD447K5CmBxxTCc9g50cnNIVEYb6qga3RgP4kstei_Qha3LLatC86aG4UU5rb-grNE7OJB1jGyKsDAOuOlKdNvbeSCNuoK66s45g4CSGIXxNyYf_o6b4KB8QnL7kIMoSrzlM7xq7TSe_gmS3AeoDKsC1rJov_Cva3pnRsOPMNzNuVLR8H6f35xjpwtKzIDS2naswaY6z-jZqdtBWMglIB-zSbVhDO_QXUI9yc5a2U75rReSmqmEE4dAeAvBKtdbdO5UCGK5OA4RtWyFdOXmAO6maxylFWcy5o-Ps0.24T8cP2hQszimlpIlgUPtpXtGUXwi9ANk1dmHvL2IsY&dib_tag=se&keywords=MSI+PRO+Z690-A+WiFi+ProSeries+Motherboard+%28ATX%2C+12th+Gen+Intel+Core%2C+LGA+1700+Socket%2C+DDR5%2C+PCIe+5%2C+2.5G+LAN%2C+M.2+Slots%2C+Wi-Fi+6E%29&qid=1713699733&s=electronics&sprefix=msi+pro+z690-a+wifi+proseries+motherboard+atx%2C+12th+gen+intel+core%2C+lga+1700+socket%2C+ddr5%2C+pcie+5%2C+2.5g+lan%2C+m.2+slots%2C+wi-fi+6e+%2Celectronics%2C140&sr=1-1">
+                        Buy Now
+                    </a>
+                </td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- CPU Cooler -->
+            <tr class="item">
+                <th scope="row" class="component">CPU Cooler</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- Memory/RAM -->
+            <tr class="item">
+                <th scope="row" class="component">Memory/RAM</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- Storage -->
+            <tr class="item">
+                <th scope="row" class="component">Storage</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- GPU -->
+            <tr class="item">
+                <th scope="row" class="component">GPU</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- Power Supply -->
+            <tr class="item">
+                <th scope="row" class="component">Power Supply</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- Case -->
+            <tr class="item">
+                <th scope="row" class="component">Case</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <!-- Monitor -->
+            <tr class="item">
+                <th scope="row" class="component">Monitor</td>
+                <td class="product">
+                    <img src='img/placeholder.jpg' alt="placeholder">
+                </td>
+                <td class="Title"></td>
+                <td class="Price"></td>
+                <td class="Link"></td>
+                <td class="Remove">
+                    <button class="fa fa-trash"></button>
+                </td>
+            </tr>
+
+            <tr class="item-footer">
+                <td colspan="5" class="component">Grand Total</th>
+                <td colspan="1" class="price">
+                    <b>$0.00</b>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>

@@ -21,7 +21,7 @@ h1 {
 .homepage-subtext {
   text-align: center;
   font-weight: 500;
-  
+
 }
 
 .homepage-btn {
@@ -36,7 +36,7 @@ button.homepage-btn-style {
   border-radius: 32px;
   background: linear-gradient(110deg, rgb(252, 252, 252, .32) 0%, rgb(153, 153, 153, .32) 100%);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-   backdrop-filter: blur(28px); 
+   backdrop-filter: blur(28px);
   border: transparent;
 }
 
@@ -47,7 +47,7 @@ button.homepage-btn-style {
 
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background: radial-gradient(274.12% 170.61% at -14.97% -4.79%, rgba(217, 43, 162, 0.15) 0%, rgba(0, 102, 204, 0.50) 49.56%, rgba(217, 43, 162, 0.15) 100%), black;
     font-family: 'Inter', sans-serif;
@@ -114,9 +114,10 @@ nav a > img {
     height: 36px;
     border: solid transparent;
     outline: none;
-    color: rgba(255, 255, 255, 0.60);
+    color: black;
+    background-color: white;
     font-size: 20px;
-    font-style: medium;
+    font-weight: medium;
     margin-left: 25px;
 }
 
@@ -129,7 +130,7 @@ nav a > img {
     height: 64px;
     border-radius: 16px;
     opacity: 0.32;
-    background: white;
+    background-color: white;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-top: 16px;
     margin-bottom: 16px;
@@ -143,7 +144,7 @@ nav a > img {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
 }
 
 .results-box > p{
@@ -163,11 +164,10 @@ nav a > img {
   width: 1160px;
   display: flex;
   justify-content: space-between;
-  
+
 }
 
 .filter-header {
-  width: 177px;
   height: 45px;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.16);
@@ -179,7 +179,13 @@ nav a > img {
   margin-top: 8px;
   margin-bottom: 8px;
   margin-left: 16px;
-  margin-right: 96px;
+  margin-right: 16px;
+}
+
+.sort-header {
+  color: black;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .results {
@@ -195,4 +201,74 @@ nav a > img {
 .results p {
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+/* Build.HTML */
+#build-header {
+  padding-top: 10px;
+  padding-bottom: 2px;
+  margin-bottom: 50px;
+  text-align: center;
+  background-color: #3b426e;
+}
+
+.product img {
+  width: 65px;
+}
+
+.PCParts a {
+  color: #FF9A00;
+}
+
+.PCParts a:visited {
+  color: #25c3c6;
+}
+
+.item .Title {
+  font-weight: bold;
+}
+
+/* Custom Button (Not using Bootstrap for Build.HTML) */
+.Remove button{
+  background-color: #f44336;
+  border: none;
+  width: 38px;
+  height: 35px;
+  font-size: 18px;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+}
+
+.Remove button:hover {
+  background-color: #de392d;
+}
+
+/* table */
+.PCParts {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: 3%;
+  width: 94%;
+  height: 50px;
+  table-layout: fixed;
+}
+
+/* Adding spacing for the bottom of the page. */
+.PCParts:last-child {
+  margin-bottom: 50px;
+}
+
+.item {
+  text-align: center;
+  border: 1px solid black;
+}
+
+/* Could not figure out how to have background color connect GRAND TOTAL to COST... */
+.item-footer {
+  background-color: black;
+  height: 45px;
+}
+
+.item-footer .component {
+  padding-left: 20px;
 }

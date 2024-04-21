@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900" rel="stylesheet">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <nav>
-            <p style="display: inline-block">BuildGenie</p>
-            <div style="display: inline-block">
-                <label for="comment_field">Search:</label>
-                <textarea style="height: 1em" class="form-control" id="comment_field" name="comment"></textarea>
+            <div>
+                <a href="main.html"><h1><span class="colored-title">Build</span>Genie</h1></a>
+                <ul>
+                    <a href="search.html"><img src="img/search-icon.svg" alt="search"><p>Search</p></a>
+                    <a href="build.html"><img src="img/build-icon.svg" alt="build"><p>Build</p></a>
+                    <a href="compare.html"><img src="img/compare-icon.svg" alt="compare"><p>Compare</p></a>
+                    <a href="#Login"><img src="img/login-icon.svg" alt="login"><p>Login</p></a>
+                </ul>
+                
             </div>
-            <a href="#Build">Build</a></li>
-            <a href="#Compare">Compare</a></li>
-            <a href="#Login">Login</a></li>
-            </nav>
-            <div style="background-color: grey; display: inline-block">
-                <h1>Your Builds:</h1>
-            </div>
-            <div style="background-color: grey; display: inline-block">
-                <h1>Other Builds:</h1>
-            </div>
+        </nav> 
+        <div style="background-color: grey; display: inline-block">
+            <h1>Your Builds:</h1>
+        </div>
+        <div style="background-color: grey; display: inline-block">
+            <h1>Other Builds:</h1>
+        </div>
     </body>
 </html>
