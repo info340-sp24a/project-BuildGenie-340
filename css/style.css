@@ -114,9 +114,10 @@ nav a > img {
     height: 36px;
     border: solid transparent;
     outline: none;
-    color: rgba(255, 255, 255, 0.60);
+    color: black;
+    background-color: white;
     font-size: 20px;
-    font-style: medium;
+    font-weight: medium;
     margin-left: 25px;
 }
 
@@ -129,7 +130,7 @@ nav a > img {
     height: 64px;
     border-radius: 16px;
     opacity: 0.32;
-    background: white;
+    background-color: white;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-top: 16px;
     margin-bottom: 16px;
@@ -167,7 +168,6 @@ nav a > img {
 }
 
 .filter-header {
-  width: 177px;
   height: 45px;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.16);
@@ -179,7 +179,13 @@ nav a > img {
   margin-top: 8px;
   margin-bottom: 8px;
   margin-left: 16px;
-  margin-right: 96px;
+  margin-right: 16px;
+}
+
+.sort-header {
+  color: black;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .results {
