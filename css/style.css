@@ -48,8 +48,8 @@ button.homepage-btn-style {
 body {
     min-height: 100vh;
     margin: 0;
-    background: radial-gradient(274.12% 170.61% at -14.97% -4.79%, rgba(217, 43, 162, 0.15) 0%, rgba(0, 102, 204, 0.50) 49.56%, rgba(217, 43, 162, 0.15) 100%), black;
     font-family: 'Inter', sans-serif;
+    background: radial-gradient(274.12% 170.61% at -14.97% -4.79%, rgba(217, 43, 162, 0.15) 0%, rgba(0, 102, 204, 0.50) 49.56%, rgba(217, 43, 162, 0.15) 100%), black;
     color: white;
 }
 
@@ -60,20 +60,20 @@ nav {
     background: rgba(13, 1, 6, 0.30);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-nav > div {
-  display: flex;
-  align-items: center;
-  width: 1160px;
-  justify-content: space-between;
 
+.links-long {
+  display: none;
+  margin-right: 30px;
 }
 
-nav ul {
-  display: flex;
+.links-short {
+  display: none;
+  margin-right: 30px;
 }
+
 nav a {
   font-size: 20px;
   font-weight: 600;
@@ -103,7 +103,11 @@ nav a:hover {
 
 nav a > img {
   margin-right: 4px;
+}
 
+#hamburger-menu {
+  display: block;
+  margin-right: 30px;
 }
 
 
@@ -134,7 +138,7 @@ nav a > img {
     display: flex;
     text-align: center;
     align-items: center;
-    width: 766px;
+    width: 90%;
     height: 64px;
     border-radius: 16px;
     opacity: 0.32;
@@ -142,6 +146,8 @@ nav a > img {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-top: 16px;
     margin-bottom: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .results-box {
@@ -152,6 +158,14 @@ nav a > img {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.filter-result-box {
+  width: 100%;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  align-items: center;
 }
 
 .results-box > p{
@@ -164,11 +178,11 @@ nav a > img {
 
 .results:nth-child(2) {
   display: flex;
-  width: 1160px;
+  width: 100%;
 }
 
 .filter-results {
-  width: 1160px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 
@@ -201,6 +215,7 @@ nav a > img {
   border: 1px solid rgba(0, 0, 0, 0.16);
   background: rgba(255, 255, 255, 0.50);
   margin-left: 34px;
+  margin-right: 18px;
   justify-content: center;
   color: black;
 }
@@ -410,6 +425,80 @@ should work for both tables once we implement functionality */
   display: block;
 }
 
-@media (max-width: 992px) {
+@media (min-width: 598px) {
+  .search-bar {
+    width: 582px;
+  }
 
+  .results:nth-child(2) {
+    width: 582px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .links-short {
+    display: flex;
+  }
+
+  #hamburger-menu {
+    display: none;
+  }
+
+  .search-bar {
+    width: 752px;
+  }
+
+  .results:nth-child(2) {
+    width: 752px;
+  }
+  
+  .filter-results {
+    width: 752px;
+  }
+
+  .filter-result-box {
+    width: 752px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .search-bar {
+    width: 976px;
+  }
+
+  .results:nth-child(2) {
+    width: 976px;
+  }
+  
+  .filter-results {
+    width: 976px;
+  }
+
+  .links-short {
+    display: none;
+  }
+
+  .links-long {
+    display: flex;
+  }
+
+  .filter-result-box {
+    width: 976px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .results:nth-child(2) {
+    width: 1200px;
+  }
+  
+  .filter-results {
+    width: 1200px;
+  }
+  
+  .filter-result-box {
+    width: 1200px;
+  }
 }
