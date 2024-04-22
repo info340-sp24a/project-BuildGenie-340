@@ -45,7 +45,6 @@ button.homepage-btn-style {
   color: white;
 }
 
-
 body {
     min-height: 100vh;
     margin: 0;
@@ -83,6 +82,15 @@ nav a {
   text-decoration: none;
   display: flex;
   align-items: center;
+}
+
+nav a:hover,
+nav a:focus,
+nav a:active {
+  text-shadow: #FF9A00;
+  color: #FF9A00;
+  border-bottom: 0.1rem solid #FF9A00;
+  transition: ease-out 0.5s;
 }
 
 nav a h1 {
