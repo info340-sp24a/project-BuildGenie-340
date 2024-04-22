@@ -146,7 +146,6 @@ nav a > img {
 
 .results-box {
     background: rgba(255, 255, 255, 0.90);
-    margin-bottom: 80px;
     width: 100%;
     height: 1440px;
     text-align: center;
@@ -409,4 +408,8 @@ should work for both tables once we implement functionality */
 #yourBuild:checked ~ .component-info.yourBuild,
 #comparisonBuild:checked ~ .component-info.comparisonBuild {
   display: block;
+}
+
+@media (max-width: 992px) {
+
 }
