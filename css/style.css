@@ -433,7 +433,6 @@ should work for both tables once we implement functionality */
   .results:nth-child(2) {
     width: 582px;
   }
-
 }
 
 @media (min-width: 768px) {
@@ -500,5 +499,19 @@ should work for both tables once we implement functionality */
   
   .filter-result-box {
     width: 1200px;
+  }
+}
+
+@media (max-width: 598px) {
+  #build-header > h1 {
+    font-size: 1.5em;
+  }
+
+  .build-table h2 {
+    font-size: 1.25em;
+  }
+
+  .build-table label {
+    font-size: 0.85em;
   }
 }
