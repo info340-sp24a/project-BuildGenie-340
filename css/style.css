@@ -105,7 +105,7 @@ nav a > img {
   margin-right: 4px;
 }
 
-#hamburger-menu {
+.hamburger-menu {
   display: block;
   margin-right: 30px;
 }
@@ -441,7 +441,7 @@ should work for both tables once we implement functionality */
     display: flex;
   }
 
-  #hamburger-menu {
+  .hamburger-menu {
     display: none;
   }
 
