@@ -70,7 +70,7 @@ nav {
 }
 
 .links-short {
-  display: none;
+  display: flex;
   margin-right: 30px;
 }
 
@@ -94,7 +94,11 @@ nav a:active {
 }
 
 nav a h1 {
-  color: white;
+  color: rgb(255, 255, 255);
+}
+
+.bigTitle {
+  display: none;
 }
 
 nav a:hover {
@@ -104,12 +108,6 @@ nav a:hover {
 nav a > img {
   margin-right: 4px;
 }
-
-.hamburger-menu {
-  display: block;
-  margin-right: 30px;
-}
-
 
 .colored-title {
   color: #FF9A00;
@@ -436,14 +434,6 @@ should work for both tables once we implement functionality */
 }
 
 @media (min-width: 768px) {
-  .links-short {
-    display: flex;
-  }
-
-  .hamburger-menu {
-    display: none;
-  }
-
   .search-bar {
     width: 752px;
   }
@@ -463,6 +453,14 @@ should work for both tables once we implement functionality */
 
 
 @media (min-width: 992px) {
+  .bigTitle {
+    display: block;
+  }
+
+  .smallTitle{
+    display: none;
+  }
+  
   .search-bar {
     width: 976px;
   }
