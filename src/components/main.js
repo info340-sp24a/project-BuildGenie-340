@@ -1,5 +1,4 @@
-import  { Navbar }  from "./components/navbar";
-
+import  { Navbar } from './navbar'
 export function MainPage(props) {
     return (
         <Navbar />

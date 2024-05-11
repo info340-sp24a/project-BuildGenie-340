@@ -27,9 +27,12 @@
 
 import React from 'react';
 import  { MainPage } from './main';
-import './css/style.css';
+import { SeachPage } from './search';
+import '../style.css'
+
 export default function App(props) {
   return (
-    <MainPage />
+    // <MainPage />
+    // <SeachPage />
   )
 }
