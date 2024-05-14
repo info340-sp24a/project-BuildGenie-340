@@ -26,10 +26,19 @@
 
 
 import React from 'react';
-import  { MainPage } from './main';
+import  { MainPage } from './main'; // MAKE SURE TO RESTORE!
+import { BuildPage } from './build';
 import './css/style.css';
 export default function App(props) {
   return (
-    <MainPage />
+    <div>
+
+
+
+
+
+
+
+    </div>
   )
 }
