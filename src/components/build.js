@@ -21,9 +21,14 @@ export function BuildPage(props) {
                 </thead>
             </table>
             <table className="PCParts main">
-                <PCPart />
+                <PCPart component={"CPU"}/>
+                <PCPart component={"Motherboard"} img={"../img/MSI Z690-A.jpg"} />
+                {/* Continue for all components... may want to make a helper function or .JSON to help out. */}
             </table>
-                <Footer />
+            <form class="footer-top">
+                <button type="submit" aria-label="Submit">Save your build</button>
+            </form>
+            <Footer />
         </div>
     )
 }

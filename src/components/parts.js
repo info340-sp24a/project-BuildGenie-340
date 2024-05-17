@@ -1,12 +1,16 @@
 import React from "react";
 
+// import '../../public/img';
+
 export function PCPart(props) {
+
+    const {component, img} = props;
     return (
         <tbody>
             <tr className="item">
-                <th scope="row" className="component">Motherboard</th>
+                <th scope="row" className="component">{component}</th>
                 <td className="product">
-                    <img src="./img/MSI Z690-A.jpg" alt={"placeholder"} />
+                    <img src={img} alt={component + " placeholder"} />
                 </td>
                 <td className="Title">MSI PRO Z690-A WIFI ATX LGA1700 Motherboard</td>
                 <td className="Price">$148.40</td>
