@@ -4,8 +4,19 @@ import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { PCPart } from './parts';
 
-import PC_PART_DATA from './../data/pcparts.json'
+import PC_PART_DATA from './../data/optimizedParts.json'
 // console.log(PC_PART_DATA);
+
+/*
+-------------------------------------
+|   ALL COLUMNS IN PC_PART_DATA     |
+|           (that matter)           |
+-------------------------------------
+    `name`
+    `Component`
+    `price`
+    `type`
+*/
 
 export function BuildPage(props) {
     return (
