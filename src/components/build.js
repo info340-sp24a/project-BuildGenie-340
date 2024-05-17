@@ -4,6 +4,9 @@ import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { PCPart } from './parts';
 
+import PC_PART_DATA from './../data/pcparts.json'
+// console.log(PC_PART_DATA);
+
 export function BuildPage(props) {
     return (
         <div>
@@ -25,7 +28,7 @@ export function BuildPage(props) {
                 <PCPart component={"Motherboard"} img={"../img/MSI Z690-A.jpg"} />
                 {/* Continue for all components... may want to make a helper function or .JSON to help out. */}
             </table>
-            <form class="footer-top">
+            <form className="footer-top">
                 <button type="submit" aria-label="Submit">Save your build</button>
             </form>
             <Footer />
