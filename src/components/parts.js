@@ -17,7 +17,7 @@ export function PCPart(props) {
             <tr className="item">
                 <th scope="row" className="component">{capitalizeFirstLetter(partData.Component)}</th>
                 <td className="product">
-                    <img src={"./img/icons/" + partData.Component + ".png"} alt={partData.Component.replace(/-/g, ' ') + " placeholder"}/>
+                    <img src={"/img/icons/" + partData.Component + ".png"} alt={partData.Component.replace(/-/g, ' ') + " placeholder"}/>
                 </td>
                 <td className="Title">{partData.name}</td>
                 <td className="Price">{"$" + partData.price}</td>
