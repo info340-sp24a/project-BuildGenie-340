@@ -33,8 +33,8 @@ import '../style.css'
 
 export default function App(props) {
   return (
-    // <MainPage />
+    <MainPage />
     // <SeachPage />
-      <BuildPage />
+    // <BuildPage />
   )
 }
