@@ -45,21 +45,31 @@ export function BuildPage(props) {
         );
     }
 
+    // id list of PCParts in `PC_PART_DATA` that are to be displayed in `Build.js`
+    const temporarySetPCPartList = [11910, 11130, 5381, 4, 3093, 15703, 9095, 14550, 6325];
+
+    // Data Processing Function for Displayed Parts
+    const displayedParts = temporarySetPCPartList.map((id) => {
+        const elem = <PCPart key={id} partData={PC_PART_DATA[id]} />
+        return elem;
+    });
+
+    // Calculate the Grand Total Price
+    let value = 0;
+    temporarySetPCPartList.forEach((id) => {
+        value += parseFloat(PC_PART_DATA[id].price);
+        console.log(value);
+    });
+
+
     return (
         <div>
             <Navbar />
             <PartTitles someTitleList={titleList} />
             <table className="PCParts main">
                 {/* CPU, Motherboard, CPU Cooler, RAM, Storage, GPU, Power Supply, Case, Monitor */}
-                <PCPart partData={PC_PART_DATA[11910]} />
-                <PCPart partData={PC_PART_DATA[11130]} />
-                <PCPart partData={PC_PART_DATA[5381]} />
-                <PCPart partData={PC_PART_DATA[4]} />
-                <PCPart partData={PC_PART_DATA[3093]} />
-                <PCPart partData={PC_PART_DATA[15703]} />
-                <PCPart partData={PC_PART_DATA[9095]} />
-                <PCPart partData={PC_PART_DATA[14550]} />
-                <PCPart partData={PC_PART_DATA[6325]} />
+                {/* Temporary `<PCPart>` Calls to elements that resemble the Final Version */}
+                {displayedParts}
 
                 {/* Need to make a function to only get CPU for first, Motherboard for second, etc..
                     UPS is "uninterruptible power supply" */}
@@ -67,7 +77,7 @@ export function BuildPage(props) {
                     <tr className="item-footer">
                         <td colSpan="5" className="component">Grand Total</td>
                         <td colSpan="1" className="price">
-                            <b>$0.00</b>
+                            <b>{"$" + value}</b>
                         </td>
                     </tr>
                 </tbody>
