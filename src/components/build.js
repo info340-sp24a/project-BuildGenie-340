@@ -58,7 +58,6 @@ export function BuildPage(props) {
     let value = 0;
     temporarySetPCPartList.forEach((id) => {
         value += parseFloat(PC_PART_DATA[id].price);
-        console.log(value);
     });
 
 
