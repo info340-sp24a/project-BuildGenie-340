@@ -29,12 +29,14 @@ import React from 'react';
 import  { MainPage } from './main';
 import { SeachPage } from './search';
 import { BuildPage } from './build';
-import '../style.css'
+import { ComparePage } from './compare';
+import '../style.css';
 
 export default function App(props) {
   return (
     // <MainPage />
     // <SeachPage />
-      <BuildPage />
+    // <BuildPage />
+    <ComparePage />
   )
 }
