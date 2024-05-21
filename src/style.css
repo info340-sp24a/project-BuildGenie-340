@@ -398,6 +398,7 @@ nav a > img {
 .comparison-tables {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 45px;
 }
 
 .build-table {
