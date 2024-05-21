@@ -29,13 +29,14 @@ function MainToBuildButton(props){
 export function MainPage(props) {
     return (
         <div>
-            <Navbar />
-            <main>
-                <MainPageText />
-                <MainToBuildButton />
-            </main>
+            <div id="mainPageBody">
+                <Navbar />
+                <main>
+                    <MainPageText />
+                    <MainToBuildButton />
+                </main>
+                </div>
             <Footer />
         </div>
-        
     );
 }
