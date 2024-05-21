@@ -348,6 +348,8 @@ nav a > img {
 .footer-main {
   display: flex;
   justify-content: flex-start;
+  gap: 40px;
+  align-items: center;
 }
 
 .footer-container {
@@ -357,11 +359,6 @@ nav a > img {
 .footer-main h3 {
   font-size: 3rem;
   padding-left: 40px;
-}
-
-.footer-main {
-  gap: 40px;
-  align-items: center;
 }
 
 .footer-main p {
