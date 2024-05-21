@@ -26,10 +26,13 @@ export function ResultBox(props) {
 }
 
 export function SearchResultsBox(props) {
+    const { inputtedText } = props
+    
+
     // search results for search inputted into Search Input
     return (
         <div className="results-box">
-            <p>search results for:</p>
+            <p>search results for: {inputtedText} </p>
             <div className="filter-result-box">
                 <div className="filter-results">
                     <FilterSortByBox />
