@@ -34,9 +34,9 @@ import '../style.css';
 
 export default function App(props) {
   return (
-    //<MainPage />
+    <MainPage />
     // <SeachPage />
     // <BuildPage />
-    <ComparePage />
+    // <ComparePage />
   )
 }

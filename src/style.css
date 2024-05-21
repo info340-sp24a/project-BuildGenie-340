@@ -5,6 +5,21 @@
 main {
   font-family: 'inter', sans-serif;
 }
+
+/* Attempted fix at infamous Footer bug */
+#mainPageBody {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Attempted fix at infamous Footer bug */
+footer {
+  margin-top: auto;
+  position: absolute;
+  /* bottom: 0; */
+  width: 100%;
+}
+
 .coloring-header{
   color: #FF9A00;
 }
@@ -442,7 +457,7 @@ should work for both tables once we implement functionality */
   .results:nth-child(2) {
     width: 752px;
   }
-  
+
   .filter-results {
     width: 752px;
   }
@@ -461,7 +476,7 @@ should work for both tables once we implement functionality */
   .smallTitle{
     display: none;
   }
-  
+
   .search-bar {
     width: 976px;
   }
@@ -469,7 +484,7 @@ should work for both tables once we implement functionality */
   .results:nth-child(2) {
     width: 976px;
   }
-  
+
   .filter-results {
     width: 976px;
   }
@@ -491,11 +506,11 @@ should work for both tables once we implement functionality */
   .results:nth-child(2) {
     width: 1200px;
   }
-  
+
   .filter-results {
     width: 1200px;
   }
-  
+
   .filter-result-box {
     width: 1200px;
   }
