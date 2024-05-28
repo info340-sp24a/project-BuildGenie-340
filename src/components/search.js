@@ -11,14 +11,13 @@ export function SearchPage(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         setFinalText(inputtedText);
-        setInputtedText('')
+        setInputtedText('');
     };
 
     return(
         <div>
             <Navbar />
             <main className="search">
-                {/* <ComposeSearch inputtedText={inputtedText} setInputtedText={setInputtedText} /> */}
                 <ComposeSearch inputtedText={inputtedText} setInputtedText={setInputtedText} handleSubmit={handleSubmit} />
                 <SearchResultsBox inputtedText={finalText} />
             </main>

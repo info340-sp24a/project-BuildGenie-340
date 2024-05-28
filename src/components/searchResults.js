@@ -1,6 +1,4 @@
 import React from "react";
- // ximport Button from 'react-bootstrap/Button';
-// npm install react-bootstrap bootstrap
 
 export function FilterSortByBox(props) {
     return(
@@ -16,8 +14,9 @@ export function FilterSortByBox(props) {
 }
 
 export function ResultBox(props) {
-
-    // in future, props will be an array of PC Component objects, if props is empty, display empty, if propts is not empty, display items
+    const { searchFor } = props;
+    // get inputtedText and compare to parts in json file, if names match, add to array and display
+    // if nothing matches, display empty
     return(
         <div className="results">
             <p>Empty</p>
@@ -26,8 +25,7 @@ export function ResultBox(props) {
 }
 
 export function SearchResultsBox(props) {
-    const { inputtedText } = props
-    
+    const { inputtedText } = props;
 
     // search results for search inputted into Search Input
     return (
@@ -36,7 +34,7 @@ export function SearchResultsBox(props) {
             <div className="filter-result-box">
                 <div className="filter-results">
                     <FilterSortByBox />
-                    <ResultBox />
+                    <ResultBox searchFor={inputtedText} />
                 </div>
             </div>
         </div>
