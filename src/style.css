@@ -206,13 +206,6 @@ nav a > img {
   width: 100%;
 }
 
-.filter-results {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-}
-
 .filter-header {
   height: 45px;
   border-radius: 4px;
@@ -452,7 +445,7 @@ should work for both tables once we implement functionality */
 
 @media (min-width: 598px) {
   .search-bar {
-    width: 582px;
+    width: 498px;
   }
 
   .results:nth-child(2) {
@@ -462,14 +455,10 @@ should work for both tables once we implement functionality */
 
 @media (min-width: 768px) {
   .search-bar {
-    width: 752px;
+    width: 668px;
   }
 
   .results:nth-child(2) {
-    width: 752px;
-  }
-
-  .filter-results {
     width: 752px;
   }
 
@@ -489,14 +478,10 @@ should work for both tables once we implement functionality */
   }
 
   .search-bar {
-    width: 976px;
+    width: 892px;
   }
 
   .results:nth-child(2) {
-    width: 976px;
-  }
-
-  .filter-results {
     width: 976px;
   }
 
@@ -515,10 +500,6 @@ should work for both tables once we implement functionality */
 
 @media (min-width: 1200px) {
   .results:nth-child(2) {
-    width: 1200px;
-  }
-
-  .filter-results {
     width: 1200px;
   }
 

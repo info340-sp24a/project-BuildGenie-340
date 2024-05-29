@@ -1,5 +1,7 @@
 import { Footer } from './footer';
 import  { Navbar } from './navbar'
+import { Link } from 'react-router-dom'
+
 
 function MainPageText(props){
     return (
@@ -19,9 +21,10 @@ function MainPageText(props){
 function MainToBuildButton(props){
     return (
         <div className="homepage-btn">
-            <button type="button" className="homepage-btn-style">
-                <a href="build.html" className="colored-btn-text">Begin Your Build</a>
-            </button>
+            
+            <Link to="/build">
+                <button type="button" className="homepage-btn-style colored-btn-text">Begin Your Build</button>
+            </Link>
         </div>
     )
 }

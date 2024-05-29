@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
+
 export function Navbar(props) {
     return(
         <nav>
-            <a href="../public/index.html"><h1><span className="colored-title">Build</span>Genie</h1></a>
+            <Link to="/"><h1><span className="colored-title">Build</span>Genie</h1></Link>
             <ul className="links-long">
-                <a href="../public/search.html"><img src="../img/search-icon.svg" alt="search" /><p>Search</p></a>
-                <a href="../public/build.html"><img src="../img/build-icon.svg" alt="build" /><p>Build</p></a>
-                <a href="../public/compare.html"><img src="../img/compare-icon.svg" alt="compare" /><p>Compare</p></a>
-                <a href="#Login"><img src="../img/login-icon.svg" alt="login" /><p>Login</p></a>
+                <Link to="/search"><img src="../img/search-icon.svg" alt="search" /><p>Search</p></Link>
+                <Link to="/build"><img src="../img/build-icon.svg" alt="build" /><p>Build</p></Link>
+                <Link to="/compare"><img src="../img/compare-icon.svg" alt="compare" /><p>Compare</p></Link>
+                <Link to="/login"><img src="../img/login-icon.svg" alt="login" /><p>Login</p></Link>
             </ul>
             <ul className="links-short">
-                <a href="../public/search.html"><img src="../img/search-icon.svg" alt="search" /></a>
-                <a href="../public/build.html"><img src="../img/build-icon.svg" alt="build" /></a>
-                <a href="../public/compare.html"><img src="../img/compare-icon.svg" alt="compare" /></a>
-                <a href="#Login"><img src="../img/login-icon.svg" alt="login" /></a>
+                <Link to="../public/search.html"><img src="../img/search-icon.svg" alt="search" /></Link>
+                <Link to="../public/build.html"><img src="../img/build-icon.svg" alt="build" /></Link>
+                <Link to="../public/compare.html"><img src="../img/compare-icon.svg" alt="compare" /></Link>
+                <Link to="#Login"><img src="../img/login-icon.svg" alt="login" /></Link>
             </ul>
         </nav>
     )    

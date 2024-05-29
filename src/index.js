@@ -20,6 +20,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './components/App.js';
+import { BrowserRouter } from 'react-router-dom'
 
 // Your web app's Firebase configuration
 import { initializeApp } from "firebase/app";
@@ -39,4 +40,8 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+  <BrowserRouter >
+    <App />
+  </BrowserRouter >
+);
