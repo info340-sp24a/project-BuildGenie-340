@@ -21,7 +21,6 @@ function MainPageText(props){
 function MainToBuildButton(props){
     return (
         <div className="homepage-btn">
-            
             <Link to="/build">
                 <button type="button" className="homepage-btn-style colored-btn-text">Begin Your Build</button>
             </Link>

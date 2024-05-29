@@ -21,7 +21,7 @@ export function ComposeSearch(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="search-button">search</button> 
+                <button type="submit" className="search-page-button">search</button> 
             </form>
         </div>
     )

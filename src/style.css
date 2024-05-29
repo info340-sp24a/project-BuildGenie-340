@@ -146,19 +146,6 @@ nav a > img {
     margin-left: 25px;
 }
 
-.search-button {
-  height: 36px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  align-items: center;
-  /* background: #FFF; */
-}
-
-.search-bar-button {
-  display: flex;
-  align-items: center;
-}
-
 .search-bar {
     display: flex;
     align-items: center;
@@ -175,22 +162,21 @@ nav a > img {
     padding-left: 16px;
 }
 
+.search-bar-button {
+  display: flex;
+  align-items: center;
+}
+
 .results-box {
     background: rgba(255, 255, 255, 0.90);
     width: 100%;
-    height: 1440px;
+    min-height: 800px;
+    height: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.filter-result-box {
-  width: 100%;
-  margin-left: 8px;
-  margin-right: 8px;
-  padding-left: 8px;
-  padding-right: 8px;
-  align-items: center;
+    padding-bottom: 20px;
 }
 
 .results-box > p{
@@ -212,6 +198,7 @@ nav a > img {
   border: 1px solid rgba(0, 0, 0, 0.16);
   background: #FFF;
 }
+
 .filter-header h2 {
   color: black;
   font-weight: 500;
@@ -229,19 +216,69 @@ nav a > img {
 }
 
 .results {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   height: auto;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.16);
   background: rgba(255, 255, 255, 0.50);
-  margin-left: 34px;
-  margin-right: 18px;
-  justify-content: center;
   color: black;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
 }
 
 .results p {
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+.result-item {
+  width: auto;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  margin-right: 16px;
+  margin-left: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: white;
+
+}
+
+.result-item div {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-component {
+  display: none;
+}
+
+.search-page-button {
+  min-width: 50px;
+  height: 40px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: #D9D9D9;
+  cursor: pointer;
+  border: none;
+}
+
+.search-page-button:hover {
+  background-color: #B0B0B0;
 }
 
 /* Build.HTML */
@@ -451,6 +488,7 @@ should work for both tables once we implement functionality */
   .results:nth-child(2) {
     width: 582px;
   }
+
 }
 
 @media (min-width: 768px) {
@@ -462,11 +500,15 @@ should work for both tables once we implement functionality */
     width: 752px;
   }
 
-  .filter-result-box {
+  .results {
     width: 752px;
   }
-}
 
+  .result-item div {
+    width: 30%;
+  }
+
+}
 
 @media (min-width: 992px) {
   .bigTitle {
@@ -493,8 +535,16 @@ should work for both tables once we implement functionality */
     display: flex;
   }
 
-  .filter-result-box {
+  .results {
     width: 976px;
+  }
+
+  .result-component {
+    display: block;
+  }
+
+  .result-item div {
+    width: 50%;
   }
 }
 
@@ -503,7 +553,7 @@ should work for both tables once we implement functionality */
     width: 1200px;
   }
 
-  .filter-result-box {
+  .results {
     width: 1200px;
   }
 }

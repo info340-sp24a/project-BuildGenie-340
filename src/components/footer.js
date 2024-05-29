@@ -2,7 +2,7 @@ import React from "react";
 
 export function Footer(props) {
     return(
-        <footer>
+        <footer className="mt-auto">
             <div className="footer-container">
                 <div className="footer-main">
                     <a href="index.html">
