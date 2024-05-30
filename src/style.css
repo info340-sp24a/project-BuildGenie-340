@@ -480,6 +480,27 @@ should work for both tables once we implement functionality */
   display: block;
 }
 
+/* Sign in page */
+.signIn {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.signInHeader {
+  text-align: center;
+  margin-bottom: auto;
+}
+
+.signInCard {
+  margin: auto;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 @media (min-width: 598px) {
   .search-bar {
     width: 498px;
