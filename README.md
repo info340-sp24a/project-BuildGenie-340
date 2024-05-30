@@ -2,9 +2,9 @@
 
 This repository contains code for an interactive information web app, created for the Client-Side Web Development course at the UW iSchool.
 
+https://build-genie-info340.web.app/
+
 Members: **Nathan, Ethan, Dylan, Ricardo**
-
-
 
 
 # Getting Started with Create React App
