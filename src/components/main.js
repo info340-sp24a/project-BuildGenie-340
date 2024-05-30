@@ -34,8 +34,10 @@ export function MainPage(props) {
             <div id="mainPageBody">
                 <Navbar />
                 <main>
-                    <MainPageText />
-                    <MainToBuildButton />
+                    <div>
+                        <MainPageText />
+                        <MainToBuildButton />
+                    </div>
                 </main>
                 </div>
             <Footer />

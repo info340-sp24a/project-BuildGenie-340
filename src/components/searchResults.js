@@ -1,10 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import data from '../data/optimizedParts.json';
-import { Link } from "react-router-dom";
+import { getDatabase, ref, push, set as firebaseSet, child, get} from 'firebase/database'
 
 export function ResultBox(props) {
     let { searchFor } = props;
     const [results, setResults] = useState([]);
+    const db = getDatabase();
 
     useEffect(() => {
         // Only search if searchFor is not empty
@@ -24,13 +25,47 @@ export function ResultBox(props) {
 
             setResults(searchResults);
         } else {
-            setResults([]); // Clear results when search is cleared or initially empty
+            setResults([]);
         }
     }, [searchFor]);
 
-    function AddPartButton() {
+    function addPartToBuild(part) {
+        const buildRef = ref(db, 'build');
+        if(part.hasOwnProperty("")){
+            delete part[""]
+        }
+
+        get(buildRef).then((snapshot) => {
+                let buildData = snapshot.val();
+                if (!buildData) {
+                    buildData = {};
+                }
+                const buildKeys = Object.keys(buildData);
+                let partRef = null;
+        
+                // Check if build has part with the same component
+                for (const key of buildKeys) {
+                    if (buildData[key].Component === part.Component) {
+                        partRef = child(buildRef, key);
+                        break;
+                    }
+                };
+        
+                // If no existing part is found, create a new part reference
+                if (partRef === null) {
+                    partRef = push(buildRef);
+                };
+
+                firebaseSet(partRef, part)
+                    .then(() => {
+                        console.log(part.name + " (" + part.Component + ") added to build")
+                    })
+        });
+    };
+
+    function AddPartButton({part}) {
         return (
-            <button className="search-page-button">Add</button>
+            <button className="search-page-button" onClick={() => addPartToBuild(part)}>Add</button>
         );
     }
 
@@ -41,7 +76,7 @@ export function ResultBox(props) {
                 <div>
                     <p className='result-component'> {item.Component} </p>
                     <p> {'$' + item.price}</p>
-                    <AddPartButton />
+                    <AddPartButton part={item} />
                 </div>
             </div>
         );
