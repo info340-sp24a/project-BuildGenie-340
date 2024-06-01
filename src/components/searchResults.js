@@ -8,18 +8,19 @@ export function ResultBox(props) {
     const db = getDatabase();
 
     useEffect(() => {
+        let searchQuery = searchFor.trim();
         // Only search if searchFor is not empty
-        if(searchFor.toLowerCase() === 'gpu' || searchFor.toLowerCase() === 'graphics card') {
-            searchFor = 'video-card'
+        if (searchFor.toLowerCase() === 'gpu' || searchFor.toLowerCase() === 'graphics card') {
+            searchQuery = 'video-card';
         }
 
-        if (searchFor.trim()) {
+        if (searchQuery !== "") {
             let searchResults = data.filter(part =>
-                part.name.toLowerCase().includes(searchFor.toLowerCase()) ||
-                part.Component.toLowerCase().includes(searchFor.toLowerCase())
+                part.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                part.Component.toLowerCase().includes(searchQuery.toLowerCase())
             );
 
-            if (searchFor.toLowerCase() === 'cpu') {
+            if (searchQuery.toLowerCase() === 'cpu') {
                 searchResults = searchResults.reverse();
             }
 
@@ -42,7 +43,7 @@ export function ResultBox(props) {
                 }
                 const buildKeys = Object.keys(buildData);
                 let partRef = null;
-        
+
                 // Check if build has part with the same component
                 for (const key of buildKeys) {
                     if (buildData[key].Component === part.Component) {
@@ -50,7 +51,7 @@ export function ResultBox(props) {
                         break;
                     }
                 };
-        
+
                 // If no existing part is found, create a new part reference
                 if (partRef === null) {
                     partRef = push(buildRef);
@@ -72,7 +73,7 @@ export function ResultBox(props) {
     const resultsItemArray = results.map((item, index) => {
         const transformed = (
             <div className="result-item" key={index}>
-                <p> {item.name} </p>       
+                <p> {item.name} </p>
                 <div>
                     <p className='result-component'> {item.Component} </p>
                     <p> {'$' + item.price}</p>

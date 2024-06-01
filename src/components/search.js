@@ -22,6 +22,6 @@ export function SearchPage(props) {
                 <SearchResultsBox inputtedText={finalText} />
             </main>
             <Footer />
-        </div> 
+        </div>
     )
 }

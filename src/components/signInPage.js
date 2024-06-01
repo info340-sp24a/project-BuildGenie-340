@@ -21,7 +21,7 @@ export function SignInPage(props) {
           }
         }
       }
-      
+
     return(
     <div className='signIn'>
         <Navbar />

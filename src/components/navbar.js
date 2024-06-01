@@ -17,5 +17,5 @@ export function Navbar(props) {
                 <Link to="#Login"><img src="../img/login-icon.svg" alt="login" /></Link>
             </ul>
         </nav>
-    )    
+    )
 }
