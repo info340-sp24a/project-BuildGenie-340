@@ -8,26 +8,31 @@ export function ResultBox(props) {
     const db = getDatabase();
 
     useEffect(() => {
-        let searchQuery = searchFor.trim();
-        // Only search if searchFor is not empty
-        if (searchFor.toLowerCase() === 'gpu' || searchFor.toLowerCase() === 'graphics card') {
-            searchQuery = 'video-card';
-        }
+        let searchQuery = searchFor.replaceAll('gpu', 'video-card')
+                                    .replaceAll('graphics card', 'video-card')
+                                    .toLowerCase()
+                                    .trim();
 
-        if (searchQuery !== "") {
-            let searchResults = data.filter(part =>
-                part.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                part.Component.toLowerCase().includes(searchQuery.toLowerCase())
-            );
+        // Allow for multiple parameters to be included in search (ex: 'MSI GPU')
+        let searchParameters = searchQuery.split(" ");
 
-            if (searchQuery.toLowerCase() === 'cpu') {
-                searchResults = searchResults.reverse();
+        searchParameters.forEach((parameter) => {
+            // not empty search
+            if (parameter !== "") {
+                let searchResults = data.filter(part =>
+                    part.name.toLowerCase().includes(parameter) ||
+                    part.Component.toLowerCase().includes(parameter)
+                );
+
+                if (parameter === 'cpu') {
+                    searchResults = searchResults.reverse();
+                }
+
+                setResults(searchResults);
+            } else {
+                setResults([]);
             }
-
-            setResults(searchResults);
-        } else {
-            setResults([]);
-        }
+        });
     }, [searchFor]);
 
     function addPartToBuild(part) {
