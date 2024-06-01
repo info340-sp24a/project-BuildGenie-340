@@ -4,6 +4,7 @@ import React from "react";
 
 export function PCPart(props) {
 
+    // If passed an ID which does not exist, `partData` = undefined
     const {partData} = props;
 
     // helper function to make 'Component' look better.
@@ -11,6 +12,9 @@ export function PCPart(props) {
         let returnedString = string.replace(/-/g, ' ');
         return returnedString.charAt(0).toUpperCase() + returnedString.slice(1);
     }
+
+    // TODO: When passed a value which does not exist, instead return a button to search for components
+    // May want to create separate helper function outside of `PCPart` to do this...
 
     return (
         <tbody>
