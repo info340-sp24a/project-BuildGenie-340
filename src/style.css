@@ -458,12 +458,11 @@ nav a > img {
   justify-content: space-around;
   margin-bottom: 45px;
   margin-top: 16px;
-
+  min-height: 800px;
 }
 
 .build-table {
   width: 45%;
-  border: 1px solid #000000;
   padding: 10px;
   box-sizing: border-box;
 }
