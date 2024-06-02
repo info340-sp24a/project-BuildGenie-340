@@ -1,7 +1,6 @@
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { Navbar } from './navbar';
 export function SignInPage(props) {
 
     const auth = getAuth();
@@ -16,17 +15,24 @@ export function SignInPage(props) {
         credentialHelper: 'none', //don't show the email account chooser
         callbacks: { //"lifecycle" callbacks
           signInSuccessWithAuthResult: (redirectUrl) => {
-            window.location.assign('/');
-            return false; //don't redirect after authentication
+<<<<<<< search
+        
+=======
+            window.location.assign('/search');
+            
+            // have profile picture default to null profile picture
+
+            return true; //don't redirect after authentication
+>>>>>>> main
           }
         }
       }
 
     return(
     <div className='signIn'>
-        <Navbar />
         <div className='signInHeader'>
-            <h1><span className='coloring-header'> B</span>G</h1>
+            <h1><span className='coloring-header'> B</span>G</h1> 
+            <p> Please choose a sign in method:</p>
         </div>
         <div className='signInCard' >
             <StyledFirebaseAuth firebaseAuth={auth} uiConfig={firebaseUIConfig} />
