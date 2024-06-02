@@ -163,7 +163,7 @@ export function ComparePage(props) {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="compare-box">
                 <div className="comparison-tables">
                     <div className="build-table">

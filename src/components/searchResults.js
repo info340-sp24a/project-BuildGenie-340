@@ -3,9 +3,10 @@ import data from '../data/optimizedParts.json';
 import { getDatabase, ref, push, set as firebaseSet, child, get} from 'firebase/database'
 
 export function ResultBox(props) {
-    let { searchFor, setMessage } = props;
+    let { searchFor, setMessage, currUser } = props;
     const [results, setResults] = useState([]);
     const db = getDatabase();
+    const buildsRef = ref(db, 'builds/' + currUser.uid);
 
     useEffect(() => {
         let searchQuery = searchFor.replaceAll('gpu', 'video-card')
@@ -41,12 +42,11 @@ export function ResultBox(props) {
     }, [searchFor]);
 
     function addPartToBuild(part) {
-        const buildRef = ref(db, 'build');
         if(part.hasOwnProperty("")){
             delete part[""]
-        }
+        };
 
-        get(buildRef)
+        get(buildsRef)
             .then((snapshot) => {
                 let buildData = snapshot.val();
                 if (!buildData) {
@@ -58,14 +58,14 @@ export function ResultBox(props) {
                 // Check if build has part with the same component
                 for (const key of buildKeys) {
                     if (buildData[key].Component === part.Component) {
-                        partRef = child(buildRef, key);
+                        partRef = child(buildsRef, key);
                         break;
                     }
                 };
 
                 // If no existing part is found, create a new part reference
                 if (partRef === null) {
-                    partRef = push(buildRef);
+                    partRef = push(buildsRef);
                 };
 
                 firebaseSet(partRef, part)
@@ -120,7 +120,7 @@ export function ResultBox(props) {
 }
 
 export function SearchResultsBox(props) {
-    const { inputtedText } = props;
+    const { inputtedText, currUser } = props;
     const [message, setMessage] = useState("");
 
     return (
@@ -128,7 +128,7 @@ export function SearchResultsBox(props) {
             <p>search results for: {inputtedText} </p>
             <div>{message}</div>
             <div className="results">
-                <ResultBox searchFor={inputtedText} setMessage={setMessage}/>
+                <ResultBox searchFor={inputtedText} setMessage={setMessage} currUser={currUser} />
             </div>
         </div>
     );

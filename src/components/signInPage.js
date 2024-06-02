@@ -15,15 +15,11 @@ export function SignInPage(props) {
         credentialHelper: 'none', //don't show the email account chooser
         callbacks: { //"lifecycle" callbacks
           signInSuccessWithAuthResult: (redirectUrl) => {
-<<<<<<< search
-        
-=======
-            window.location.assign('/search');
+            window.location.assign('/');
             
             // have profile picture default to null profile picture
 
             return true; //don't redirect after authentication
->>>>>>> main
           }
         }
       }

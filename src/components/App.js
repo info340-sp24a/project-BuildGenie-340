@@ -17,27 +17,25 @@ export default function App(props) {
     onAuthStateChanged(auth, (firebaseUserObj) => {
       if(firebaseUserObj) {
         console.log('auth state changed')
-        console.log('logged in');
-        console.log(firebaseUserObj.uid); 
+        console.log('logged in: ' + firebaseUserObj.uid);
         setCurrUser(firebaseUserObj);
       } else {
         console.log('logged out')
       }
 
     })
-    console.log(auth);
   }, [])
   return (
-    <>
-    <Navbar currUser={currUser}/>
-    <Routes >
-      <Route index element={ <MainPage currUser={currUser}/> } />
-      <Route path='/search' element={ <SearchPage currUser={currUser} /> } />
-      <Route path='/build' element={ <BuildPage currUser={currUser} /> } />
-      <Route path='/compare' element={ <ComparePage currUser={currUser} /> } />
-      <Route path='/login' element={<SignInPage />} />
-    </Routes>
-    </>
+    <div>
+      <Navbar currUser={currUser}/>
+      <Routes >
+        <Route index element={ <MainPage currUser={currUser}/> } />
+        <Route path='/search' element={ <SearchPage currUser={currUser} /> } />
+        <Route path='/build' element={ <BuildPage currUser={currUser} /> } />
+        <Route path='/compare' element={ <ComparePage currUser={currUser} /> } />
+        <Route path='/login' element={<SignInPage />} />
+      </Routes>
+    </div>
 
   )
 }
