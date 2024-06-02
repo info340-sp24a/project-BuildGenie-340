@@ -21,15 +21,15 @@ export function SignInPage(props) {
           }
         }
       }
-      
+
     return(
     <div className='signIn'>
         <Navbar />
         <div className='signInHeader'>
-            <h1><span className='coloring-header'> B</span>G</h1> 
+            <h1><span className='coloring-header'> B</span>G</h1>
         </div>
         <div className='signInCard' >
-            <StyledFirebaseAuth firebaseAuth={auth} uiConfig={firebaseUIConfig} />    
+            <StyledFirebaseAuth firebaseAuth={auth} uiConfig={firebaseUIConfig} />
         </div>
     </div>
 

@@ -45,19 +45,33 @@ export function BuildPage(props) {
         );
     }
 
+    // TODO: ADD 'add component' BUTTONS WHICH CONNECT TO '/search' AND BRING DATA HERE.
     // id list of PCParts in `PC_PART_DATA` that are to be displayed in `Build.js`
+    // CPU = 11910
     const temporarySetPCPartList = [11910, 11130, 5381, 4, 3093, 15703, 9095, 14550, 6325];
 
     // Data Processing Function for Displayed Parts
     const displayedParts = temporarySetPCPartList.map((id) => {
-        const elem = <PCPart key={id} partData={PC_PART_DATA[id]} />
-        return elem;
+        // console.log(PC_PART_DATA[2000000000]); // ALWAYS RETURNS 'UNDEFINED'!
+        // if (id === undefined) {
+        //     // return addComponent(11910);
+        //     console.log(id);
+        // } else {
+            return <PCPart key={id} partData={PC_PART_DATA[id]} />
+        // }
     });
+
+    // TODO: Make <PCPart> render for every known value, and return 'add component' button otherwise.
+    // There is a set order in what elements can be on the table, so a value needs to be passed into
+    // the search query that equals what component it is. This also makes sure that someone who adds
+    // a monitor but not a CPU doesn't have the monitor render in the table first; a 'fixed' table.
 
     // Calculate the Grand Total Price
     let value = 0;
     temporarySetPCPartList.forEach((id) => {
-        value += parseFloat(PC_PART_DATA[id].price);
+        if (id !== undefined) {
+            value += parseFloat(PC_PART_DATA[id].price);
+        }
     });
 
 

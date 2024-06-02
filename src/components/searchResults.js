@@ -8,25 +8,36 @@ export function ResultBox(props) {
     const db = getDatabase();
 
     useEffect(() => {
-        // Only search if searchFor is not empty
-        if(searchFor.toLowerCase() === 'gpu' || searchFor.toLowerCase() === 'graphics card') {
-            searchFor = 'video-card'
-        }
+        let searchQuery = searchFor.replaceAll('gpu', 'video-card')
+                                    .replaceAll('graphics card', 'video-card')
+                                    .toLowerCase()
+                                    .trim();
 
-        if (searchFor.trim()) {
-            let searchResults = data.filter(part =>
-                part.name.toLowerCase().includes(searchFor.toLowerCase()) ||
-                part.Component.toLowerCase().includes(searchFor.toLowerCase())
-            );
+        // Needed for shrinking down data to only components with parameters listed in searchQuery
+        let selectedData = data;
 
-            if (searchFor.toLowerCase() === 'cpu') {
-                searchResults = searchResults.reverse();
+        // Allow for multiple parameters to be included in search (ex: 'MSI GPU')
+        let searchParameters = searchQuery.split(" ");
+
+        searchParameters.forEach((parameter) => {
+            // not empty search
+            if (parameter !== "") {
+                let searchResults = selectedData.filter(part =>
+                    part.name.toLowerCase().includes(parameter) ||
+                    part.Component.toLowerCase().includes(parameter)
+                );
+
+                if (parameter === 'cpu') {
+                    searchResults = searchResults.reverse();
+                }
+
+                selectedData = searchResults;
+
+                setResults(searchResults);
+            } else {
+                setResults([]);
             }
-
-            setResults(searchResults);
-        } else {
-            setResults([]);
-        }
+        });
     }, [searchFor]);
 
     function addPartToBuild(part) {
@@ -43,7 +54,7 @@ export function ResultBox(props) {
                 }
                 const buildKeys = Object.keys(buildData);
                 let partRef = null;
-        
+
                 // Check if build has part with the same component
                 for (const key of buildKeys) {
                     if (buildData[key].Component === part.Component) {
@@ -51,7 +62,7 @@ export function ResultBox(props) {
                         break;
                     }
                 };
-        
+
                 // If no existing part is found, create a new part reference
                 if (partRef === null) {
                     partRef = push(buildRef);
@@ -80,7 +91,7 @@ export function ResultBox(props) {
     const resultsItemArray = results.map((item, index) => {
         const transformed = (
             <div className="result-item" key={index}>
-                <p> {item.name} </p>       
+                <p> {item.name} </p>
                 <div>
                     <p className='result-component'> {item.Component} </p>
                     <p> {'$' + item.price}</p>
