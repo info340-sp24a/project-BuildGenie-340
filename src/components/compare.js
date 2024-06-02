@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar } from './navbar';
+// import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { getDatabase, ref, get, child} from 'firebase/database';
 

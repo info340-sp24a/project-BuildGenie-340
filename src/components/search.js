@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Footer } from "./footer";
 import { SearchResultsBox } from "./searchResults";
-import { ComposeSearch } from "./composeSearch";
+import { ComposeSearch } from "./ComposeSearch";
 
 export function SearchPage(props) {
     const { currUser } = props
