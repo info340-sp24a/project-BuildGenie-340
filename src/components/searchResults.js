@@ -11,6 +11,8 @@ export function ResultBox(props) {
     useEffect(() => {
         let searchQuery = searchFor.replaceAll('gpu', 'video-card')
                                     .replaceAll('graphics card', 'video-card')
+                                    .replaceAll('ram', 'memory')
+                                    .replaceAll('psu', 'power-supply')
                                     .toLowerCase()
                                     .trim();
         let selectedData = data;
