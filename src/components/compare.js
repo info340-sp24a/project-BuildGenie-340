@@ -164,48 +164,51 @@ export function ComparePage(props) {
     return (
         <div>
             <Navbar />
-            <div className="comparison-tables">
-                <div className="build-table">
-                    <h2>Select Your Build</h2>
-                    <select onChange={handleSelectBuild1} value={build1.name}>
-                        {[...presetBuilds, ...userBuilds].map(build => (
-                            <option key={build.name} value={build.name}>{build.name}</option>
-                        ))}
-                    </select>
-                    <table>
-                        <tbody>
-                            {Object.keys(build1.parts).map((key) => (
-                                <tr key={key}>
-                                    <td>{build1.parts[key].Component.toUpperCase()}</td>
-                                    <td>{build1.parts[key].name} (${build1.parts[key].price})</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <h3>Total Price: ${calcTotalPrice(build1)}</h3>
-                </div>
-                {build2 && (
+            <div className="compare-box">
+                <div className="comparison-tables">
                     <div className="build-table">
-                        <h2>Select Comparison Build</h2>
-                        <select onChange={handleSelectBuild2} value={build2.name}>
+                        <h2>Select Your Build</h2>
+                        <select onChange={handleSelectBuild1} value={build1.name}>
                             {[...presetBuilds, ...userBuilds].map(build => (
                                 <option key={build.name} value={build.name}>{build.name}</option>
                             ))}
                         </select>
                         <table>
                             <tbody>
-                                {Object.keys(build2.parts).map((key) => (
+                                {Object.keys(build1.parts).map((key) => (
                                     <tr key={key}>
-                                        <td>{build2.parts[key].Component.toUpperCase()}</td>
-                                        <td>{build2.parts[key].name} (${build2.parts[key].price})</td>
+                                        <td>{build1.parts[key].Component.toUpperCase()}</td>
+                                        <td>{build1.parts[key].name} (${build1.parts[key].price})</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                        <h3>Total Price: ${calcTotalPrice(build2)}</h3>
+                        <h3>Total Price: ${calcTotalPrice(build1)}</h3>
                     </div>
-                )}
+                    {build2 && (
+                        <div className="build-table">
+                            <h2>Select Comparison Build</h2>
+                            <select onChange={handleSelectBuild2} value={build2.name}>
+                                {[...presetBuilds, ...userBuilds].map(build => (
+                                    <option key={build.name} value={build.name}>{build.name}</option>
+                                ))}
+                            </select>
+                            <table>
+                                <tbody>
+                                    {Object.keys(build2.parts).map((key) => (
+                                        <tr key={key}>
+                                            <td>{build2.parts[key].Component.toUpperCase()}</td>
+                                            <td>{build2.parts[key].name} (${build2.parts[key].price})</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <h3>Total Price: ${calcTotalPrice(build2)}</h3>
+                        </div>
+                    )}
+                </div>
             </div>
+            
             <Footer />
         </div>
     )
