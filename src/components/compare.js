@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Navbar } from './navbar';
 import { Footer } from './footer';
 
 const builds = [
@@ -70,7 +69,6 @@ export function ComparePage(props) {
 
     return (
         <div>
-            <Navbar/>
             <div className="comparison-tables">
                 <div className="build-table">
                     <h2>Select Your Build</h2>

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { PCPart } from './parts';
 
@@ -63,7 +62,6 @@ export function BuildPage(props) {
 
     return (
         <div>
-            <Navbar />
             <PartTitles someTitleList={titleList} />
             <table className="PCParts main">
                 {/* CPU, Motherboard, CPU Cooler, RAM, Storage, GPU, Power Supply, Case, Monitor */}

@@ -1,5 +1,4 @@
 import { Footer } from './footer';
-import  { Navbar } from './navbar'
 import { Link } from 'react-router-dom'
 
 
@@ -32,7 +31,6 @@ export function MainPage(props) {
     return (
         <div>
             <div id="mainPageBody">
-                <Navbar />
                 <main>
                     <MainPageText />
                     <MainToBuildButton />
