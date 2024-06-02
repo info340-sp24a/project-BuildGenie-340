@@ -457,6 +457,8 @@ nav a > img {
   display: flex;
   justify-content: space-around;
   margin-bottom: 45px;
+  margin-top: 16px;
+
 }
 
 .build-table {
