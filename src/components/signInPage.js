@@ -16,7 +16,7 @@ export function SignInPage(props) {
         credentialHelper: 'none', //don't show the email account chooser
         callbacks: { //"lifecycle" callbacks
           signInSuccessWithAuthResult: (redirectUrl) => {
-            window.location.assign('/main');
+            window.location.assign('/');
             return false; //don't redirect after authentication
           }
         }
