@@ -3,7 +3,7 @@ import data from '../data/optimizedParts.json';
 import { getDatabase, ref, push, set as firebaseSet, child, get} from 'firebase/database'
 
 export function ResultBox(props) {
-    let { searchFor } = props;
+    let { searchFor, setMessage } = props;
     const [results, setResults] = useState([]);
     const db = getDatabase();
 
@@ -35,7 +35,8 @@ export function ResultBox(props) {
             delete part[""]
         }
 
-        get(buildRef).then((snapshot) => {
+        get(buildRef)
+            .then((snapshot) => {
                 let buildData = snapshot.val();
                 if (!buildData) {
                     buildData = {};
@@ -57,9 +58,16 @@ export function ResultBox(props) {
                 };
 
                 firebaseSet(partRef, part)
-                    .then(() => {
-                        console.log(part.name + " (" + part.Component + ") added to build")
-                    })
+                    .then(() => {     
+                        const partAdded = (part.name + " (" + part.Component + ")");
+                        const message = (
+                            <div className="part-message">
+                                <p className="part-added">{partAdded}</p>
+                                <p>added to build</p>
+                            </div>
+                        )                 
+                        setMessage(message);
+                    });
         });
     };
 
@@ -67,7 +75,7 @@ export function ResultBox(props) {
         return (
             <button className="search-page-button" onClick={() => addPartToBuild(part)}>Add</button>
         );
-    }
+    };
 
     const resultsItemArray = results.map((item, index) => {
         const transformed = (
@@ -102,14 +110,15 @@ export function ResultBox(props) {
 
 export function SearchResultsBox(props) {
     const { inputtedText } = props;
+    const [message, setMessage] = useState("");
 
-    // search results for search inputted into Search Input
     return (
         <div className="results-box">
             <p>search results for: {inputtedText} </p>
+            <div>{message}</div>
             <div className="results">
-                <ResultBox searchFor={inputtedText} />
+                <ResultBox searchFor={inputtedText} setMessage={setMessage}/>
             </div>
         </div>
-    )
-}
+    );
+};

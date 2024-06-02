@@ -186,6 +186,7 @@ nav a > img {
     font-style: normal;
     font-weight: 300;
     margin-top: 16px;
+    margin-bottom: 0px;
 }
 
 .results:nth-child(2) {
@@ -226,6 +227,7 @@ nav a > img {
   background: rgba(255, 255, 255, 0.50);
   color: black;
   width: 100%;
+  margin-top: 16px;
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 8px;
@@ -280,6 +282,17 @@ nav a > img {
 
 .search-page-button:hover {
   background-color: #B0B0B0;
+}
+
+.part-message {
+  display: flex;
+  color: black;
+  margin-bottom: 0px;
+}
+
+.part-added {
+  font-weight: bold;
+  margin-right: 4px;
 }
 
 /* Build.HTML */
