@@ -13,15 +13,10 @@ export function ResultBox(props) {
                                     .replaceAll('graphics card', 'video-card')
                                     .toLowerCase()
                                     .trim();
-
-        // Needed for shrinking down data to only components with parameters listed in searchQuery
         let selectedData = data;
-
-        // Allow for multiple parameters to be included in search (ex: 'MSI GPU')
         let searchParameters = searchQuery.split(" ");
 
         searchParameters.forEach((parameter) => {
-            // not empty search
             if (parameter !== "") {
                 let searchResults = selectedData.filter(part =>
                     part.name.toLowerCase().includes(parameter) ||
