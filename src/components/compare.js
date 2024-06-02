@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar } from './navbar';
 import { Footer } from './footer';
 import { getDatabase, ref, get, child} from 'firebase/database';
 
@@ -68,244 +67,112 @@ const presetBuilds = [
     // Add other preset builds similarly if needed...
 ];
 
-export function ComparePage(props) {
-    const [build1, setBuild1] = useState(presetBuilds[0]);
-    const [build2, setBuild2] = useState(presetBuilds[1]);
-    const [userBuilds, setUserBuilds] = useState([]);
+export function ComparePage({ currUser }) {
+    const [builds, setBuilds] = useState(presetBuilds);
+    const [selectedBuild1, setSelectedBuild1] = useState('');
+    const [selectedBuild2, setSelectedBuild2] = useState('');
+    const [parts1, setParts1] = useState(null);
+    const [parts2, setParts2] = useState(null);
     const db = getDatabase();
 
-    // const handleSelectBuild1 = (event) => {
-    //     const selectedBuild = [...presetBuilds, ...userBuilds].find(build => build.name === event.target.value);
-    //     setBuild1(selectedBuild);
-    // };
-
-    // const handleSelectBuild2 = (event) => {
-    //     const selectedBuild = [...presetBuilds, ...userBuilds].find(build => build.name === event.target.value);
-    //     setBuild2(selectedBuild);
-    // };
-
-    const handleSelectBuild1 = (event) => {
-        const buildName = event.target.value;
-        const selectedBuild = [...presetBuilds, ...userBuilds].find(build => build.name === buildName);
-        console.log("Selected Build 1:", selectedBuild);
-        setBuild1(selectedBuild);
-    };
-    
-    const handleSelectBuild2 = (event) => {
-        const buildName = event.target.value;
-        const selectedBuild = [...presetBuilds, ...userBuilds].find(build => build.name === buildName);
-        console.log("Selected Build 2:", selectedBuild);
-        setBuild2(selectedBuild);
-    };
-
-    const calcTotalPrice = (build) => {
-        if (!build || !build.parts) return "0.00";
-        return Object.values(build.parts)
-            .filter(part => part && part.price) // Ensure part and part.price are defined
-            .reduce((total, part) => total + (part.price || 0), 0) // Handle undefined price
-            .toFixed(2);
-    };
-
-    // useEffect(() => {
-    //     const fetchUserBuilds = async () => {
-    //         const dbRef = ref(db);
-    //         try {
-    //             const snapshot = await get(child(dbRef, 'build'));
-    //             if (snapshot.exists()) {
-    //                 const builds = snapshot.val();
-    //                 console.log(builds);
-    //                 const structuredBuilds = Object.keys(builds).map(key => ({
-    //                     name: key,
-    //                     parts: builds[key]
-    //                 }));
-    //                 setUserBuilds(structuredBuilds);
-    //                 console.log(structuredBuilds);
-    //             } else {
-    //                 console.log("No user builds available");
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching user builds: ", error);
-    //         }
-    //     };
-
-    //     fetchUserBuilds();
-    // }, [db]);
-
     useEffect(() => {
-        const fetchUserBuilds = async () => {
+        const fetchBuilds = async () => {
             const dbRef = ref(db);
             try {
-                const snapshot = await get(child(dbRef, 'build'));
+                const snapshot = await get(child(dbRef, `builds/${currUser.uid}`));
                 if (snapshot.exists()) {
-                    const builds = snapshot.val();
-                    console.log(builds);
-    
-                    // Aggregating all parts under one main buikd
-                    const userBuild = {
-                        name: "User Build", // placeholder name
-                        parts: builds
+                    const userBuildsData = snapshot.val();
+                    const structuredUserBuilds = {
+                        name: "Your Build",
+                        parts: userBuildsData
                     };
-    
-                    setUserBuilds([userBuild]);
-                    console.log(userBuild);
+
+                    console.log('Fetched user build:', structuredUserBuilds);
+                    setBuilds([...presetBuilds, structuredUserBuilds]);
                 } else {
                     console.log("No user builds available");
                 }
             } catch (error) {
-                console.error("Error fetching user builds: ", error);
+                console.error("Error fetching builds: ", error);
             }
         };
-    
-        fetchUserBuilds();
-    }, [db]);
 
-    
+        fetchBuilds();
+    }, [db, currUser.uid]);
+
+    const handleSelectBuild1 = (event) => {
+        const buildName = event.target.value;
+        const selectedBuild = builds.find(build => build.name === buildName);
+        setSelectedBuild1(buildName);
+        setParts1(selectedBuild.parts);
+        console.log('Selected Build 1:', selectedBuild);
+    };
+
+    const handleSelectBuild2 = (event) => {
+        const buildName = event.target.value;
+        const selectedBuild = builds.find(build => build.name === buildName);
+        setSelectedBuild2(buildName);
+        setParts2(selectedBuild.parts);
+        console.log('Selected Build 2:', selectedBuild);
+    };
+
+    const calcTotalPrice = (parts) => {
+        if (!parts) return "0.00";
+        return Object.values(parts)
+            .filter(part => part && part.price)
+            .reduce((total, part) => total + (part.price || 0), 0) 
+            .toFixed(2);
+    };
 
     return (
         <div>
-            {/* <Navbar /> */}
-            <div className="compare-box">
-                <div className="comparison-tables">
-                    <div className="build-table">
-                        <h2>Select Your Build</h2>
-                        <select onChange={handleSelectBuild1} value={build1.name}>
-                            {[...presetBuilds, ...userBuilds].map(build => (
-                                <option key={build.name} value={build.name}>{build.name}</option>
-                            ))}
-                        </select>
+            <div className="comparison-tables">
+                <div className="build-table">
+                    <h2>Select Build 1</h2>
+                    <select onChange={handleSelectBuild1} value={selectedBuild1}>
+                        <option value="">Select a build</option>
+                        {builds.map(build => (
+                            <option key={build.name} value={build.name}>{build.name}</option>
+                        ))}
+                    </select>
+                    {parts1 && (
                         <table>
                             <tbody>
-                                {Object.keys(build1.parts).map((key) => (
-                                    <tr key={key}>
-                                        <td>{build1.parts[key].Component.toUpperCase()}</td>
-                                        <td>{build1.parts[key].name} (${build1.parts[key].price})</td>
+                                {Object.keys(parts1).map((partKey) => (
+                                    <tr key={partKey}>
+                                        <td>{parts1[partKey].Component.toUpperCase()}</td>
+                                        <td>{parts1[partKey].name} (${parts1[partKey].price})</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
-                        <h3>Total Price: ${calcTotalPrice(build1)}</h3>
-                    </div>
-                    {build2 && (
-                        <div className="build-table">
-                            <h2>Select Comparison Build</h2>
-                            <select onChange={handleSelectBuild2} value={build2.name}>
-                                {[...presetBuilds, ...userBuilds].map(build => (
-                                    <option key={build.name} value={build.name}>{build.name}</option>
-                                ))}
-                            </select>
-                            <table>
-                                <tbody>
-                                    {Object.keys(build2.parts).map((key) => (
-                                        <tr key={key}>
-                                            <td>{build2.parts[key].Component.toUpperCase()}</td>
-                                            <td>{build2.parts[key].name} (${build2.parts[key].price})</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                            <h3>Total Price: ${calcTotalPrice(build2)}</h3>
-                        </div>
                     )}
+                    <h3>Total Price: ${calcTotalPrice(parts1)}</h3>
+                </div>
+                <div className="build-table">
+                    <h2>Select Build 2</h2>
+                    <select onChange={handleSelectBuild2} value={selectedBuild2}>
+                        <option value="">Select a build</option>
+                        {builds.map(build => (
+                            <option key={build.name} value={build.name}>{build.name}</option>
+                        ))}
+                    </select>
+                    {parts2 && (
+                        <table>
+                            <tbody>
+                                {Object.keys(parts2).map((partKey) => (
+                                    <tr key={partKey}>
+                                        <td>{parts2[partKey].Component.toUpperCase()}</td>
+                                        <td>{parts2[partKey].name} (${parts2[partKey].price})</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                    <h3>Total Price: ${calcTotalPrice(parts2)}</h3>
                 </div>
             </div>
-            
             <Footer />
         </div>
-    )
+    );
 }
-
-// export function ComparePage(props) {
-//     const [builds, setBuilds] = useState([]);
-//     const [selectedBuild1, setSelectedBuild1] = useState(null);
-//     const [selectedBuild2, setSelectedBuild2] = useState(null);
-//     const [parts1, setParts1] = useState(null);
-//     const [parts2, setParts2] = useState(null);
-//     const db = getDatabase();
-
-//     useEffect(() => {
-//         const fetchBuilds = async () => {
-//             const dbRef = ref(db);
-//             try {
-//                 const snapshot = await get(child(dbRef, 'build'));
-//                 if (snapshot.exists()) {
-//                     const buildsData = snapshot.val();
-//                     console.log(buildsData);
-//                     const structuredBuilds = Object.entries(buildsData).map(([buildName, parts]) => ({
-//                         name: buildName,
-//                         parts: parts
-//                     }));
-//                     setBuilds(structuredBuilds);
-//                 } else {
-//                     console.log("No builds available");
-//                 }
-//             } catch (error) {
-//                 console.error("Error fetching builds: ", error);
-//             }
-//         };
-
-//         fetchBuilds();
-//     }, [db]);
-
-//     const handleSelectBuild1 = (event) => {
-//         const buildName = event.target.value;
-//         const selectedBuild = builds.find(build => build.name === buildName);
-//         setSelectedBuild1(buildName);
-//         setParts1(selectedBuild.parts);
-//     };
-
-//     const handleSelectBuild2 = (event) => {
-//         const buildName = event.target.value;
-//         const selectedBuild = builds.find(build => build.name === buildName);
-//         setSelectedBuild2(buildName);
-//         setParts2(selectedBuild.parts);
-//     };
-
-//     return (
-//         <div>
-//             <Navbar />
-//             <div className="comparison-tables">
-//                 <div className="build-table">
-//                     <h2>Select Build 1</h2>
-//                     <select onChange={handleSelectBuild1} value={selectedBuild1}>
-//                         {builds.map(build => (
-//                             <option key={build.name} value={build.name}>{build.name}</option>
-//                         ))}
-//                     </select>
-//                     {parts1 && (
-//                         <table>
-//                             <tbody>
-//                                 {Object.keys(parts1).map((partKey) => (
-//                                     <tr key={partKey}>
-//                                         <td>{parts1[partKey].Component ? parts1[partKey].Component.toUpperCase() : ""}</td>
-//                                         <td>{parts1[partKey].name} (${parts1[partKey].price})</td>
-//                                     </tr>
-//                                 ))}
-//                             </tbody>
-//                         </table>
-//                     )}
-//                 </div>
-//                 <div className="build-table">
-//                     <h2>Select Build 2</h2>
-//                     <select onChange={handleSelectBuild2} value={selectedBuild2}>
-//                         {builds.map(build => (
-//                             <option key={build.name} value={build.name}>{build.name}</option>
-//                         ))}
-//                     </select>
-//                     {parts2 && (
-//                         <table>
-//                             <tbody>
-//                                 {Object.keys(parts2).map((partKey) => (
-//                                     <tr key={partKey}>
-//                                         <td>{parts2[partKey].Component ? parts2[partKey].Component.toUpperCase() : ""}</td>
-//                                         <td>{parts2[partKey].name} (${parts2[partKey].price})</td>
-//                                     </tr>
-//                                 ))}
-//                             </tbody>
-//                         </table>
-//                     )}
-//                 </div>
-//             </div>
-//             <Footer />
-//         </div>
-//     );
-// }
