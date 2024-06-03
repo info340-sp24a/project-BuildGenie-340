@@ -3,9 +3,6 @@ import React from 'react';
 import { Footer } from './footer';
 import { PCPart } from './parts';
 
-import PC_PART_DATA from './../data/optimizedParts.json'
-// console.log(PC_PART_DATA);
-
 /*
 -------------------------------------
 |   ALL COLUMNS IN PC_PART_DATA     |
@@ -47,16 +44,16 @@ export function BuildPage(props) {
     // TODO: ADD 'add component' BUTTONS WHICH CONNECT TO '/search' AND BRING DATA HERE.
     // id list of PCParts in `PC_PART_DATA` that are to be displayed in `Build.js`
     // CPU = 11910
-    const temporarySetPCPartList = [11910, 11130, 5381, 4, 3093, 15703, 9095, 14550, 6325];
+    const partNames = ["CPU", "Motherboard", "CPU Cooler", "Memory", "Internal Hard Drive", "Video Card", "Power Supply", "Case", "Monitor"];
 
     // Data Processing Function for Displayed Parts
-    const displayedParts = temporarySetPCPartList.map((id) => {
+    const displayedParts = partNames.map((part) => {
         // console.log(PC_PART_DATA[2000000000]); // ALWAYS RETURNS 'UNDEFINED'!
         // if (id === undefined) {
         //     // return addComponent(11910);
         //     console.log(id);
         // } else {
-            return <PCPart key={id} partData={PC_PART_DATA[id]} />
+            return <PCPart key={part} partName={part} />
         // }
     });
 
@@ -66,12 +63,15 @@ export function BuildPage(props) {
     // a monitor but not a CPU doesn't have the monitor render in the table first; a 'fixed' table.
 
     // Calculate the Grand Total Price
+    // TODO: Make a useState() and useEffect() to gather Firebase data on prices to calculate price and display it.
+
+
     let value = 0;
-    temporarySetPCPartList.forEach((id) => {
-        if (id !== undefined) {
-            value += parseFloat(PC_PART_DATA[id].price);
-        }
-    });
+    // temporarySetPCPartList.forEach((id) => {
+    //     if (id !== undefined) {
+    //         value += parseFloat(PC_PART_DATA[id].price);
+    //     }
+    // });
 
 
     return (
@@ -93,9 +93,6 @@ export function BuildPage(props) {
                     </tr>
                 </tbody>
             </table>
-            <form className="footer-top">
-                <button type="submit" aria-label="Submit">Save your build</button>
-            </form>
             <Footer />
         </div>
     )
