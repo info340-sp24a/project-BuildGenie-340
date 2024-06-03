@@ -44,7 +44,7 @@ export function BuildPage(props) {
     // TODO: ADD 'add component' BUTTONS WHICH CONNECT TO '/search' AND BRING DATA HERE.
     // id list of PCParts in `PC_PART_DATA` that are to be displayed in `Build.js`
     // CPU = 11910
-    const partNames = ["cpu", "motherboard", "cpu cooler", "memory", "internal hard drive", "video card", "power supply", "case", "monitor"];
+    const partNames = ["CPU", "Motherboard", "CPU Cooler", "Memory", "Internal Hard Drive", "Video Card", "Power Supply", "Case", "Monitor"];
 
     // Data Processing Function for Displayed Parts
     const displayedParts = partNames.map((part) => {
