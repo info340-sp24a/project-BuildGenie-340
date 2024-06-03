@@ -130,7 +130,7 @@ export function ComparePage({ currUser }) {
                 <div className="build-table">
                     <h2>Select Build 1</h2>
                     <select onChange={handleSelectBuild1} value={selectedBuild1}>
-                        <option value="">Select a build</option>
+                        <option value="" disabled>Select a build</option>
                         {builds.map(build => (
                             <option key={build.name} value={build.name}>{build.name}</option>
                         ))}
@@ -152,7 +152,7 @@ export function ComparePage({ currUser }) {
                 <div className="build-table">
                     <h2>Select Build 2</h2>
                     <select onChange={handleSelectBuild2} value={selectedBuild2}>
-                        <option value="">Select a build</option>
+                        <option value="" disabled>Select a build</option>
                         {builds.map(build => (
                             <option key={build.name} value={build.name}>{build.name}</option>
                         ))}
