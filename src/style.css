@@ -334,21 +334,18 @@ nav a > img {
 }
 
 /* ADD COMPONENT button */
-.Title a {
+.addButton button {
   text-decoration: none;
   background-color: #0058dc;
   border: none;
   padding: 6px;
+  margin: 6px auto;
   font-size: 18px;
   border-radius: 4px;
   transition-duration: 0.2s;
 }
 
-.Title a b {
-  font-family: 'Work Sans', sans-serif;
-}
-
-.Title a:hover {
+.addButton button:hover {
   background-color: #0065FF; /* Complementary Color to #FF9A00 */
 }
 
@@ -375,6 +372,11 @@ nav a > img {
   width: 94%;
   height: 50px;
   table-layout: fixed;
+}
+
+/* Fixing height for table rows */
+th {
+  height: 40px;
 }
 
 /* Adding spacing for the bottom of the page. */
