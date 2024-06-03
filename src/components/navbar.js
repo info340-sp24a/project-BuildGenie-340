@@ -16,6 +16,9 @@ export function Navbar(props) {
         });
     }
     const storage = getStorage();
+    const defProfile = storageRef(storage, 'transparentDefault.png');
+    const [currProfilePic, setProfilePic] = useState()
+    console.log(defProfile);
     return(
         <nav>
             <Link to="/"><h1><span className="colored-title">Build</span>Genie</h1></Link>
@@ -25,7 +28,7 @@ export function Navbar(props) {
                 <Link to="/compare"><img src="../img/compare-icon.svg" alt="compare" /><p>Compare</p></Link>
                 {/* have profile picture show up with 'Sign Out' button if signed in */}
                 {currUser.uid && <>
-                    <Link onClick={handleSignOut}>Sign Out</Link>
+                    <Link onClick={handleSignOut}><img src= {currUser.photoURL || "../img/logout-icon.svg"} alt='pfp' />Sign Out</Link>
                 </>
               
                 }
@@ -41,7 +44,17 @@ export function Navbar(props) {
                 <Link to="/search"><img src="../img/search-icon.svg" alt="search" /></Link>
                 <Link to="/build"><img src="../img/build-icon.svg" alt="build" /></Link>
                 <Link to="/compare"><img src="../img/compare-icon.svg" alt="compare" /></Link>
-                <Link to="/login"><img src="../img/login-icon.svg" alt="login" /></Link>
+                {currUser.uid && <>
+                    <Link onClick={handleSignOut}><img src= {currUser.photoURL || "../img/logout-icon.svg"} alt='pfp' /></Link>
+                </>
+              
+                }
+                
+                {/* if no sign in, have 'login show up' */}
+                {!currUser.uid && <>
+                    <Link to="/login"><img src="../img/login-icon.svg" alt="login" /></Link>
+                    </>
+                }
             </ul>
         </nav>
     )

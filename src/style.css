@@ -123,7 +123,12 @@ nav a:hover {
 
 nav a > img {
   margin-right: 4px;
+  max-width: 24px;
+  max-height: 24px;
+  border-radius: 4px;
 }
+
+
 
 .colored-title {
   color: #FF9A00;
