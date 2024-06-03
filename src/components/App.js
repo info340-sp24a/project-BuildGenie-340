@@ -11,7 +11,7 @@ import '../style.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export default function App(props) {
-  const [currUser, setCurrUser] = useState([]);
+  const [currUser, setCurrUser] = useState({ });
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (firebaseUserObj) => {

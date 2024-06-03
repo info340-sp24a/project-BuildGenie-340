@@ -159,6 +159,7 @@ export function ComparePage(props) {
         fetchUserBuilds();
     }, [db]);
 
+    let currUser = props.currUser;
     
 
     return (
