@@ -40,9 +40,7 @@ export function PCPart(props) {
             return (
                 <tr className="item">
                     <th scope="row" className="component">{capitalizeFirstLetter(partName)}</th>
-                    <Link to='/search'>
-                        <td className="addButton"><button>Add Component</button></td>
-                    </Link>
+                    <td className="addButton"><Link to='/search'><button>Add Component</button></Link></td>
                 </tr>
             );
         } else {
