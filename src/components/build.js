@@ -15,6 +15,7 @@ import { PCPart } from './parts';
 */
 
 export function BuildPage(props) {
+    const {currUser} = props;
 
     // Titles for the top of the Table
     const titleList=['Component', 'Product', 'Title', 'Price', 'Link', 'Remove'];
@@ -41,26 +42,13 @@ export function BuildPage(props) {
         );
     }
 
-    // TODO: ADD 'add component' BUTTONS WHICH CONNECT TO '/search' AND BRING DATA HERE.
-    // id list of PCParts in `PC_PART_DATA` that are to be displayed in `Build.js`
     // CPU = 11910
     const partNames = ["CPU", "Motherboard", "CPU Cooler", "Memory", "Internal Hard Drive", "Video Card", "Power Supply", "Case", "Monitor"];
 
     // Data Processing Function for Displayed Parts
     const displayedParts = partNames.map((part) => {
-        // console.log(PC_PART_DATA[2000000000]); // ALWAYS RETURNS 'UNDEFINED'!
-        // if (id === undefined) {
-        //     // return addComponent(11910);
-        //     console.log(id);
-        // } else {
-            return <PCPart key={part} partName={part} />
-        // }
+        return <PCPart key={part} partName={part} currUser={currUser} />
     });
-
-    // TODO: Make <PCPart> render for every known value, and return 'add component' button otherwise.
-    // There is a set order in what elements can be on the table, so a value needs to be passed into
-    // the search query that equals what component it is. This also makes sure that someone who adds
-    // a monitor but not a CPU doesn't have the monitor render in the table first; a 'fixed' table.
 
     // Calculate the Grand Total Price
     // TODO: Make a useState() and useEffect() to gather Firebase data on prices to calculate price and display it.
@@ -79,7 +67,6 @@ export function BuildPage(props) {
             <PartTitles someTitleList={titleList} />
             <table className="PCParts main">
                 {/* CPU, Motherboard, CPU Cooler, RAM, Storage, GPU, Power Supply, Case, Monitor */}
-                {/* Temporary `<PCPart>` Calls to elements that resemble the Final Version */}
                 {displayedParts}
 
                 {/* Need to make a function to only get CPU for first, Motherboard for second, etc..
