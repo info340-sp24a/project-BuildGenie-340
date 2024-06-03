@@ -53,15 +53,43 @@ const presetBuilds = [
     {
         name: "Preset 1",
         parts: {
-            "mother_board": { Component: "motherboard", name: "Asus ROG STRIX B650-A GAMING WIFI", price: 259.99, type: "" },
-            "led_controller": { Component: "case-accessory", name: "NZXT Hue", price: 2.95, type: "LED Controller" }
+        'cpu': { Component: 'cpu', name: "Intel Core i9-11900K", price: 539.99 },
+        'motherboard': { Component: 'motherboard', name: "ASUS ROG STRIX Z590-E", price: 379.99 },
+        'cpu_cooler': { Component: 'cpu-cooler', name: "Deepcool AK620", price: 54.99 },
+        'ram': { Component: 'memory', name: "32GB DDR4", price: 159.99 },
+        'storage': { Component: 'internal-hard-drive', name: "1TB NVMe SSD", price: 119.99 },
+        'gpu': { Component: 'video-card', name: "NVIDIA GeForce RTX 3080", price: 699.99 },
+        'monitor': { Component: 'monitor', name: "MSI G272QPF", price: 199.00 },
+        'power_supply': { Component: 'power-supply', name: 'Corsair RM1000e (2023)', price: 179.81},
+        'case': { Component: 'case', name: "Lian Li O11D XL-X", price: 222.99 }
         }
     },
     {
         name: "Preset 2",
         parts: {
-            "mother": { Component: "motherboard", name: "Asus ROG STRIX B650-A GAMING WIFI", price: 259.99, type: "" },
-            "led": { Component: "case-accessory", name: "NZXT Hue", price: 29.05, type: "LED Controller" }
+            "cpu": { Component: "cpu", name: "AMD Ryzen 7 5800X", price: 449.99 },
+            "motherboard": { Component: "motherboard", name: "Asus ROG STRIX B650-A GAMING WIFI", price: 259.99, type: "" },
+            "cpu_cooler": { Component: "cpu-cooler", name: "ARCTIC Liquid Freezer II 280", price: 95.99 },
+            "ram": { Component: "memory", name: "16GB DDR4", price: 79.99 },
+            "storage": { Component: "internal-hard-drive", name: "1TB SATA SSD", price: 69.99 },
+            "gpu": { Component: "video-card", name: "AMD Radeon RX 6700 XT", price: 479.99 },
+            "monitor": { Component: "monitor", name: "AOC C27G2Z", price: 178.99 },
+            "power_supply": { Component: "power-supply", name: "EVGA SuperNOVA 650 GT", price: 97.99 },
+            "case": { Component: "case", name: "Lian Li LANCOOL III", price: 134.99 }
+            }
+    },
+    {
+        name: "Preset 3",
+        parts: {
+            "cpu": { Component: "cpu", name: "AMD Ryzen 5 5500", price: 88.99 },
+            "motherboard": { Component: "motherboard", name: "MSI B550 GAMING GEN3", price: 99 },
+            "cpu_cooler": { Component: "cpu-cooler", name: "Thermaltake Frio Silent 14", price: 44.98 },
+            "ram": { Component: "memory", name: "Silicon Power GAMING 16 GB", price: 34.97 },
+            "storage": {Component: "internal-hard-drive", name: "SanDisk SSD PLUS", price: 29.99 },
+            "gpu": { Component: "video-card", name: "MSI GeForce RTX 3060 Ventus 2X 12G", price: 289.99 },
+            "monitor": { Component: "monitor", name: "MSI G244F", price: 104 },
+            "power_supply": { Component: "power-supply", name: "MSI MAG A650BN", price: 54 },
+            "case": { Component: "case", name: "Cooler Master MasterBox Q300L", price: 39.99 }
         }
     }
     // Add other preset builds similarly if needed...
@@ -103,17 +131,17 @@ export function ComparePage({ currUser }) {
     const handleSelectBuild1 = (event) => {
         const buildName = event.target.value;
         const selectedBuild = builds.find(build => build.name === buildName);
-        setSelectedBuild1(buildName);
-        setParts1(selectedBuild.parts);
-        console.log('Selected Build 1:', selectedBuild);
+            setSelectedBuild1(buildName);
+            setParts1(selectedBuild.parts);
+            console.log('Selected Build 1:', selectedBuild);
     };
 
     const handleSelectBuild2 = (event) => {
         const buildName = event.target.value;
         const selectedBuild = builds.find(build => build.name === buildName);
-        setSelectedBuild2(buildName);
-        setParts2(selectedBuild.parts);
-        console.log('Selected Build 2:', selectedBuild);
+            setSelectedBuild2(buildName);
+            setParts2(selectedBuild.parts);
+            console.log('Selected Build 2:', selectedBuild);
     };
 
     const calcTotalPrice = (parts) => {
