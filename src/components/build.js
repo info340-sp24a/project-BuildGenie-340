@@ -19,10 +19,20 @@ export function BuildPage(props) {
 
     const partNames = ["cpu", "motherboard", "cpu-cooler", "memory", "internal-hard drive", "video-card", "power-supply", "case", "monitor"];
 
-    // console.log("This is displayedParts AT START:", displayedParts);
-
     // Titles for the top of the Table
     const titleList=['Component', 'Product', 'Title', 'Price', 'Link', 'Remove'];
+
+    const [isDataReady, setIsDataReady] = useState(false);
+
+    const handleDataReady = () => {
+      setIsDataReady(true);
+    };
+
+    const [displayedParts, setDisplayedParts] = useState(
+        partNames.map((part) => (
+          <PCPart key={part} partName={part} currUser={currUser} onDataReady={handleDataReady} />
+        ))
+    );
 
 
     // Render the Titles for the table
@@ -46,48 +56,41 @@ export function BuildPage(props) {
         );
     }
 
-    //NEED TO RERUN <PCPart /> WHEN THE DATABASE PULLS DATA FROM IT!
-    // useEffect(() => {
-    //     // Data Processing Function for Displayed Parts
-    //     setDisplayedParts(partNames.map((part) => {
-    //         console.log("Entering parts.js");
-    //         const returned = <PCPart key={part} partName={part} currUser={currUser} />
-    //         console.log("\n\n\n\n\nLEFT parts.js\n\n\n\n\n\n");
-    //         return returned;
-    //     }));
-    // }, [currUser]);
-
-    const [isDataReady, setIsDataReady] = useState(false);
-
-  const handleDataReady = () => {
-    setIsDataReady(true);
-  };
-
-  const [displayedParts, setDisplayedParts] = useState(
-    partNames.map((part) => (
-      <PCPart
-        key={part}
-        partName={part}
-        currUser={currUser}
-        onDataReady={handleDataReady}
-      />
-    ))
-  );
-    
-      useEffect(() => {
+    useEffect(() => {
         if (isDataReady) {
-          setDisplayedParts(
-            partNames.map((part) => (
-              <PCPart
-                key={part}
-                partName={part}
-                currUser={currUser}
-                onDataReady={handleDataReady}
-              />
-            ))
-          );
+            setDisplayedParts(
+                partNames.map((part) => (
+                    <PCPart key={part} partName={part} currUser={currUser} onDataReady={handleDataReady} />
+                ))
+            );
+            waitForElm('.Price').then((elm) => {
+                let someValue = document.querySelectorAll(".Price");
+                console.log(someValue);
+            });
         }
-      }, [isDataReady, currUser]);
+    }, [isDataReady, currUser]);
+
+    // Helper function for getting prices once rendered
+    function waitForElm(selector) {
+        return new Promise(resolve => {
+            if (document.querySelector(selector)) {
+                return resolve(document.querySelector(selector));
+            }
+
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelectorAll(selector)) {
+                    resolve(document.querySelectorAll(selector));
+                    observer.disconnect();
+                }
+            });
+
+            // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    }
 
     // Calculate the Grand Total Price
     // TODO: Make a useState() and useEffect() to gather Firebase data on prices to calculate price and display it.
@@ -97,6 +100,10 @@ export function BuildPage(props) {
     //         value += parseFloat(PC_PART_DATA[id].price);
     //     }
     // });
+    waitForElm('.Price').then((elm) => {
+        console.log('Element is ready');
+        console.log(elm.textContent);
+    });
 
 
     return (

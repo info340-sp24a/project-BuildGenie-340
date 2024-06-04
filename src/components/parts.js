@@ -6,15 +6,15 @@ export function PCPart(props) {
     const [buildState, setBuildState] = useState([]);
     const { partName, currUser, onDataReady } = props;
     const db = getDatabase();
-  
+
     const fetchBuilds = async () => {
       try {
         const snapshot = await get(child(ref(db), `builds/${currUser.uid}`));
         const buildRefObject = snapshot.val();
-  
+
         if (buildRefObject) {
           const userComponents = Object.entries(buildRefObject).map(([keyString, PCObj]) => {
-            console.log("This is PCObj:", PCObj);
+            // console.log("This is PCObj:", PCObj);
             return { ...PCObj, firebaseKey: keyString };
           });
           setBuildState(userComponents);
@@ -26,21 +26,20 @@ export function PCPart(props) {
         console.error("Error fetching builds: ", error);
       }
     };
-  
+
     useEffect(() => {
       fetchBuilds();
     }, [db, currUser.uid]);
-  
+
     // helper function to make 'Component' look better.
     function capitalizeFirstLetter(string) {
       let returnedString = string.replace(/-/g, ' ');
       return returnedString.charAt(0).toUpperCase() + returnedString.slice(1);
     }
-  
+
     function createBuildTable() {
-      console.log("This is buildState at creation:", buildState);
       const foundPart = buildState.find((part) => part.Component === partName);
-  
+
       if (foundPart) {
         return (
           <tr className="item">
@@ -59,7 +58,7 @@ export function PCPart(props) {
           </tr>
         );
       }
-  
+
       return (
         <tr className="item">
           <th scope="row" className="component">{capitalizeFirstLetter(partName)}</th>
@@ -67,6 +66,6 @@ export function PCPart(props) {
         </tr>
       );
     }
-  
+
     return <tbody>{createBuildTable()}</tbody>;
   }

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { getAuth, signOut} from 'firebase/auth';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref as storageRef } from 'firebase/storage';
 
 export function Navbar(props) {
-    
+
 
     let currUser = props.currUser;
 
@@ -17,7 +17,6 @@ export function Navbar(props) {
     }
     const storage = getStorage();
     const defProfile = storageRef(storage, 'transparentDefault.png');
-    const [currProfilePic, setProfilePic] = useState()
     console.log(defProfile);
     return(
         <nav>
@@ -30,9 +29,9 @@ export function Navbar(props) {
                 {currUser.uid && <>
                     <Link onClick={handleSignOut}><img src= {currUser.photoURL || "../img/logout-icon.svg"} alt='pfp' />Sign Out</Link>
                 </>
-              
+
                 }
-                
+
                 {/* if no sign in, have 'login show up' */}
                 {!currUser.uid && <>
                     <Link to="/login"><img src="../img/login-icon.svg" alt="login" /><p>Login</p></Link>
@@ -47,9 +46,9 @@ export function Navbar(props) {
                 {currUser.uid && <>
                     <Link onClick={handleSignOut}><img src= {currUser.photoURL || "../img/logout-icon.svg"} alt='pfp' /></Link>
                 </>
-              
+
                 }
-                
+
                 {/* if no sign in, have 'login show up' */}
                 {!currUser.uid && <>
                     <Link to="/login"><img src="../img/login-icon.svg" alt="login" /></Link>
