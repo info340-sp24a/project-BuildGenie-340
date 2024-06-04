@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getDatabase, ref, get, child, remove } from "firebase/database";
-import { doc, deleteDoc } from "firebase/firestore";
 import { Link } from 'react-router-dom';
 
 export function PCPart(props) {
@@ -38,7 +37,18 @@ export function PCPart(props) {
       return returnedString.charAt(0).toUpperCase() + returnedString.slice(1);
     }
 
+    // Delete the part from Firebase
+    function handleDelete(removePart) {
 
+        // let idk = ref(db, 'builds/' + removePart.firebaseKey);
+        remove(ref(db, 'builds/' + currUser.uid + "/" +removePart)); //REMOVES ALL PARTS WHEN YOU SAVE YOUR CODE
+        // remove(removePart.firebaseKey);
+        // console.log(removePart);
+        // console.log(removePart.firebaseKey);
+
+        // ref.child(removePart.firebaseKey).remove();
+        fetchBuilds();
+    }
 
     function createBuildTable() {
       const foundPart = buildState.find((part) => part.Component === partName);
@@ -51,7 +61,6 @@ export function PCPart(props) {
      }
      
       if (foundPart) {
-        console.log(foundPart.firebaseKey)
         return (
           <tr className="item">
             <th scope="row" className="component">{capitalizeFirstLetter(partName)}</th>

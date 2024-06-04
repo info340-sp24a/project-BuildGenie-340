@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { getAuth, signOut} from 'firebase/auth';
-import { getStorage, ref as storageRef } from 'firebase/storage';
 
 export function Navbar(props) {
 
@@ -10,14 +9,12 @@ export function Navbar(props) {
 
     const handleSignOut = (event) => {
         const auth = getAuth();
-        console.log('loggin out')
+        console.log('logging out')
         signOut(auth).then(() => {
             window.location.assign('/');
         });
     }
-    const storage = getStorage();
-    const defProfile = storageRef(storage, 'transparentDefault.png');
-    console.log(defProfile);
+
     return(
         <nav>
             <Link to="/"><h1><span className="colored-title">Build</span>Genie</h1></Link>

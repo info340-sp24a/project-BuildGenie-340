@@ -73,7 +73,6 @@ export function BuildPage(props) {
             );
             waitForElm('.Price').then(() => {
                 let someValue = document.querySelectorAll(".Price");
-                console.log(someValue);
                 someValue.forEach((price) => {
                     value += price
                 })
