@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import data from '../data/optimizedParts.json';
-import { getDatabase, ref, push, set as firebaseSet, child, get} from 'firebase/database'
+import { getDatabase, push, set as firebaseSet, child, get} from 'firebase/database'
 
 export function ResultBox(props) {
-    let { searchFor, setMessage, currUser } = props;
+    let { searchFor, setMessage, currUser, buildsRef } = props;
     const [results, setResults] = useState([]);
     const db = getDatabase();
-    const buildsRef = ref(db, 'builds/' + currUser.uid);
 
     useEffect(() => {
         let searchQuery = searchFor.replaceAll('gpu', 'video-card')
@@ -115,7 +114,7 @@ export function ResultBox(props) {
 }
 
 export function SearchResultsBox(props) {
-    const { inputtedText, currUser } = props;
+    const { inputtedText, currUser, buildsRef } = props;
     const [message, setMessage] = useState("");
 
     return (
@@ -123,7 +122,7 @@ export function SearchResultsBox(props) {
             <p>search results for: {inputtedText} </p>
             <div>{message}</div>
             <div className="results">
-                <ResultBox searchFor={inputtedText} setMessage={setMessage} currUser={currUser} />
+                <ResultBox searchFor={inputtedText} setMessage={setMessage} currUser={currUser} buildsRef={buildsRef} />
             </div>
         </div>
     );

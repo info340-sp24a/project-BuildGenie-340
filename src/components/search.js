@@ -4,7 +4,7 @@ import { SearchResultsBox } from "./searchResults";
 import { ComposeSearch } from "./ComposeSearch";
 
 export function SearchPage(props) {
-    const { currUser } = props
+    const { currUser, buildsRef } = props
     const [inputtedText, setInputtedText] = useState('')
     const [finalText, setFinalText] = useState('');
 
@@ -19,7 +19,7 @@ export function SearchPage(props) {
         <div>
             <main className="search">
                 <ComposeSearch inputtedText={inputtedText} setInputtedText={setInputtedText} handleSubmit={handleSubmit} />
-                <SearchResultsBox inputtedText={finalText} currUser={currUser}/>
+                <SearchResultsBox inputtedText={finalText} currUser={currUser} buildsRef={buildsRef}/>
             </main>
             <Footer />
         </div>

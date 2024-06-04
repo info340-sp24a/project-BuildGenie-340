@@ -6,6 +6,8 @@ import { BuildPage } from './build';
 import { ComparePage } from './compare';
 import { SignInPage } from './signInPage';
 import { Routes, Route } from 'react-router-dom'
+import { getDatabase, ref, push} from 'firebase/database'
+
 
 import '../style.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -25,13 +27,26 @@ export default function App(props) {
 
     })
   }, [])
+
+  const db = getDatabase();
+
+  let buildsRef;
+
+  if (currUser.uid) {
+    buildsRef = ref(db, 'builds/' + currUser.uid);
+  } else {
+    const newRef = push(ref(db, 'builds'));
+    const buildKey = newRef.key;
+    buildsRef = ref(db, 'builds/' + buildKey);
+  }
+
   return (
     <div>
       <Navbar currUser={currUser}/>
       <Routes >
         <Route index element={ <MainPage currUser={currUser}/> } />
-        <Route path='/search' element={ <SearchPage currUser={currUser} /> } />
-        <Route path='/build' element={ <BuildPage currUser={currUser} /> } />
+        <Route path='/search' element={ <SearchPage currUser={currUser} buildsRef={buildsRef} /> } />
+        <Route path='/build' element={ <BuildPage currUser={currUser}/> } />
         <Route path='/compare' element={ <ComparePage currUser={currUser} /> } />
         <Route path='/login' element={<SignInPage />} />
       </Routes>
