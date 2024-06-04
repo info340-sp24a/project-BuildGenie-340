@@ -43,7 +43,7 @@ export function BuildPage(props) {
     }
 
     // CPU = 11910
-    const partNames = ["CPU", "Motherboard", "CPU Cooler", "Memory", "Internal Hard Drive", "Video Card", "Power Supply", "Case", "Monitor"];
+    const partNames = ["cpu", "motherboard", "cpu-cooler", "memory", "internal-hard drive", "video-card", "power-supply", "case", "monitor"];
 
     // Data Processing Function for Displayed Parts
     const displayedParts = partNames.map((part) => {
