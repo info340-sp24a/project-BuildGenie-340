@@ -71,15 +71,6 @@ export function BuildPage(props) {
                     <PCPart key={part} partName={part} currUser={currUser} onDataReady={handleDataReady} />
                 ))
             );
-<<<<<<< HEAD
-=======
-            waitForElm('.Price').then(() => {
-                let someValue = document.querySelectorAll(".Price");
-                someValue.forEach((price) => {
-                    value += price
-                })
-            });
->>>>>>> main
         }
     }, [isDataReady, currUser]);
 
