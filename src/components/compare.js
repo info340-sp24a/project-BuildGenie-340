@@ -117,6 +117,7 @@ export function ComparePage({ currUser }) {
 
                     console.log('Fetched user build:', structuredUserBuilds);
                     setBuilds([...presetBuilds, structuredUserBuilds]);
+
                 } else {
                     console.log("No user builds available");
                 }

@@ -17,7 +17,7 @@ import { PCPart } from './parts';
 export function BuildPage(props) {
     const {currUser} = props;
 
-    const partNames = ["cpu", "motherboard", "cpu-cooler", "memory", "internal-hard drive", "video-card", "power-supply", "case", "monitor"];
+    const partNames = ["cpu", "motherboard", "cpu-cooler", "memory", "internal-hard-drive", "video-card", "power-supply", "case", "monitor"];
 
     // Titles for the top of the Table
     const titleList=['Component', 'Product', 'Title', 'Price', 'Link', 'Remove'];
