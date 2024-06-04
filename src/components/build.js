@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Footer } from './footer';
 import { PCPart } from './parts';
 
+// import { delete } from './firebase/database'
 /*
 -------------------------------------
 |   ALL COLUMNS IN PC_PART_DATA     |
@@ -63,9 +64,12 @@ export function BuildPage(props) {
                     <PCPart key={part} partName={part} currUser={currUser} onDataReady={handleDataReady} />
                 ))
             );
-            waitForElm('.Price').then((elm) => {
+            waitForElm('.Price').then(() => {
                 let someValue = document.querySelectorAll(".Price");
                 console.log(someValue);
+                someValue.forEach((price) => {
+                    console.log(price);
+                })
             });
         }
     }, [isDataReady, currUser]);
@@ -73,18 +77,17 @@ export function BuildPage(props) {
     // Helper function for getting prices once rendered
     function waitForElm(selector) {
         return new Promise(resolve => {
-            if (document.querySelector(selector)) {
+            if (document.querySelectorAll(selector).length === partNames.length) {
                 return resolve(document.querySelector(selector));
             }
 
             const observer = new MutationObserver(mutations => {
-                if (document.querySelectorAll(selector)) {
-                    resolve(document.querySelectorAll(selector));
+                if (document.querySelector(selector)) {
+                    resolve(document.querySelector(selector));
                     observer.disconnect();
                 }
             });
 
-            // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
             observer.observe(document.body, {
                 childList: true,
                 subtree: true
@@ -100,10 +103,6 @@ export function BuildPage(props) {
     //         value += parseFloat(PC_PART_DATA[id].price);
     //     }
     // });
-    waitForElm('.Price').then((elm) => {
-        console.log('Element is ready');
-        console.log(elm.textContent);
-    });
 
 
     return (
