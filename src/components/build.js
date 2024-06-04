@@ -19,12 +19,6 @@ export function BuildPage(props) {
 
     const partNames = ["cpu", "motherboard", "cpu-cooler", "memory", "internal-hard drive", "video-card", "power-supply", "case", "monitor"];
 
-    // For re-rendering table
-    const [displayedParts, setDisplayedParts] = useState(partNames.map((part) => {
-            return <PCPart key={part} partName={part} currUser={currUser} />
-        })
-    );
-
     // console.log("This is displayedParts AT START:", displayedParts);
 
     // Titles for the top of the Table
@@ -53,15 +47,47 @@ export function BuildPage(props) {
     }
 
     //NEED TO RERUN <PCPart /> WHEN THE DATABASE PULLS DATA FROM IT!
-    useEffect(() => {
-        // Data Processing Function for Displayed Parts
-        setDisplayedParts(partNames.map((part) => {
-            console.log("Entering parts.js");
-            const returned = <PCPart key={part} partName={part} currUser={currUser} />
-            console.log("\n\n\n\n\nLEFT parts.js\n\n\n\n\n\n");
-            return returned;
-        }));
-    }, [currUser]);
+    // useEffect(() => {
+    //     // Data Processing Function for Displayed Parts
+    //     setDisplayedParts(partNames.map((part) => {
+    //         console.log("Entering parts.js");
+    //         const returned = <PCPart key={part} partName={part} currUser={currUser} />
+    //         console.log("\n\n\n\n\nLEFT parts.js\n\n\n\n\n\n");
+    //         return returned;
+    //     }));
+    // }, [currUser]);
+
+    const [isDataReady, setIsDataReady] = useState(false);
+
+  const handleDataReady = () => {
+    setIsDataReady(true);
+  };
+
+  const [displayedParts, setDisplayedParts] = useState(
+    partNames.map((part) => (
+      <PCPart
+        key={part}
+        partName={part}
+        currUser={currUser}
+        onDataReady={handleDataReady}
+      />
+    ))
+  );
+    
+      useEffect(() => {
+        if (isDataReady) {
+          setDisplayedParts(
+            partNames.map((part) => (
+              <PCPart
+                key={part}
+                partName={part}
+                currUser={currUser}
+                onDataReady={handleDataReady}
+              />
+            ))
+          );
+        }
+      }, [isDataReady, currUser]);
 
     // Calculate the Grand Total Price
     // TODO: Make a useState() and useEffect() to gather Firebase data on prices to calculate price and display it.

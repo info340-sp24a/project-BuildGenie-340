@@ -28,9 +28,7 @@ export function ResultBox(props) {
                 if (parameter === 'cpu') {
                     searchResults = searchResults.reverse();
                 }
-
                 selectedData = searchResults;
-
                 setResults(searchResults);
             } else {
                 setResults([]);
