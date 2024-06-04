@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from 'react';
 import data from '../data/optimizedParts.json';
-import { getDatabase, push, set as firebaseSet, child, get} from 'firebase/database'
+import { getDatabase, ref, push, set as firebaseSet, child, get} from 'firebase/database'
 
 export function ResultBox(props) {
-    let { searchFor, setMessage, currUser, buildsRef } = props;
+    let { searchFor, setMessage, currUser } = props;
     const [results, setResults] = useState([]);
     const db = getDatabase();
+    const buildsRef = ref(db, 'builds/' + currUser.uid)
 
     useEffect(() => {
         let searchQuery = searchFor.replaceAll('gpu', 'video-card')
@@ -36,45 +37,54 @@ export function ResultBox(props) {
     }, [searchFor]);
 
     function addPartToBuild(part) {
-        if(part.hasOwnProperty("")){
-            delete part[""]
-        };
-
-        get(buildsRef)
-            .then((snapshot) => {
-                let buildData = snapshot.val();
-                if (!buildData) {
-                    buildData = {};
-                }
-                const buildKeys = Object.keys(buildData);
-                let partRef = null;
-
-                // Check if build has part with the same component
-                for (const key of buildKeys) {
-                    if (buildData[key].Component === part.Component) {
-                        partRef = child(buildsRef, key);
-                        break;
+        if (currUser && currUser.uid) {
+            if (part.hasOwnProperty("")) {
+                delete part[""];
+            }
+    
+            get(buildsRef)
+                .then((snapshot) => {
+                    let buildData = snapshot.val();
+                    if (!buildData) {
+                        buildData = {};
                     }
-                };
-
-                // If no existing part is found, create a new part reference
-                if (partRef === null) {
-                    partRef = push(buildsRef);
-                };
-
-                firebaseSet(partRef, part)
-                    .then(() => {     
-                        const partAdded = (part.name + " (" + part.Component + ")");
+                    const buildKeys = Object.keys(buildData);
+                    let partRef = null;
+    
+                    // Check if build has part with the same component
+                    for (const key of buildKeys) {
+                        if (buildData[key].Component === part.Component) {
+                            partRef = child(buildsRef, key);
+                            break;
+                        }
+                    }
+    
+                    // If no existing part is found, create a new part reference
+                    if (partRef === null) {
+                        partRef = push(buildsRef);
+                    }
+    
+                    firebaseSet(partRef, part).then(() => {
+                        const partAdded = part.name + " (" + part.Component + ")";
                         const message = (
                             <div className="part-message">
                                 <p className="part-added">{partAdded}</p>
                                 <p>added to build</p>
                             </div>
-                        )                 
+                        );
                         setMessage(message);
                     });
-        });
-    };
+                });
+        } else {
+            // Display a message or redirect the user to the login page
+            const message = (
+                <div className="part-message">
+                    <p>Please log in to add parts to your build.</p>
+                </div>
+            );
+            setMessage(message);
+        }
+    }
 
     function AddPartButton({part}) {
         return (
