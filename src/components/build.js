@@ -40,7 +40,6 @@ export function BuildPage(props) {
         ))
     );
 
-
     // Render the Titles for the table
     function PartTitles(props) {
 
@@ -62,8 +61,6 @@ export function BuildPage(props) {
         );
     }
 
-    
-    
     useEffect(() => {
         if (isDataReady) {
             setDisplayedParts(
