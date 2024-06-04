@@ -39,14 +39,14 @@ export function PCPart(props) {
 
     function createBuildTable() {
         const foundPart = buildState.find((part) => part.Component === partName);
-        
+
         // Delete the part from Firebase
         const handleDelete = () => {
             let fb = foundPart.firebaseKey;
             remove(ref(db, 'builds/' + currUser.uid + "/" +fb));
             fetchBuilds();
         }
-     
+
       if (foundPart) {
         return (
           <tr className="item">
