@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import { Footer } from './footer';
 import { PCPart } from './parts';
+import { calcTotalPrice } from './compare';
+import { getDatabase, ref, get, child} from 'firebase/database';
+
 
 // import { delete } from './firebase/database'
 /*
@@ -23,8 +26,10 @@ export function BuildPage(props) {
     // Titles for the top of the Table
     const titleList=['Component', 'Product', 'Title', 'Price', 'Link', 'Remove'];
 
-    const [isDataReady, setIsDataReady] = useState(false);
+    const db = getDatabase();
 
+    const [isDataReady, setIsDataReady] = useState(false);
+    
     const handleDataReady = () => {
       setIsDataReady(true);
     };
@@ -57,6 +62,8 @@ export function BuildPage(props) {
         );
     }
 
+    let value = 0;
+
     useEffect(() => {
         if (isDataReady) {
             setDisplayedParts(
@@ -68,11 +75,12 @@ export function BuildPage(props) {
                 let someValue = document.querySelectorAll(".Price");
                 console.log(someValue);
                 someValue.forEach((price) => {
-                    console.log(price);
+                    value += price
                 })
             });
         }
     }, [isDataReady, currUser]);
+
 
     // Helper function for getting prices once rendered
     function waitForElm(selector) {
@@ -95,15 +103,28 @@ export function BuildPage(props) {
         });
     }
 
-    // Calculate the Grand Total Price
-    // TODO: Make a useState() and useEffect() to gather Firebase data on prices to calculate price and display it.
-    let value = 0;
-    // temporarySetPCPartList.forEach((id) => {
-    //     if (id !== undefined) {
-    //         value += parseFloat(PC_PART_DATA[id].price);
-    //     }
-    // });
+    const [userBuildsData, setUserBuildsData] = useState({});
 
+    useEffect(() => {
+        const fetchBuilds = async () => {
+            const dbRef = ref(db);
+            try {
+                const snapshot = await get(child(dbRef, `builds/${currUser.uid}`));
+                if (snapshot.exists()) {
+                    setUserBuildsData(snapshot.val());
+
+                } else {
+                    console.log("No user builds available");
+                }
+            } catch (error) {
+                console.error("Error fetching builds: ", error);
+            }
+        };
+
+        fetchBuilds();
+    }, [db, currUser.uid]);
+
+    value = calcTotalPrice(userBuildsData)
 
     return (
         <div>
