@@ -36,6 +36,7 @@ export function PCPart(props) {
       return returnedString.charAt(0).toUpperCase() + returnedString.slice(1);
     }
 
+    
     // Delete the part from Firebase
     function handleDelete(removePart) {
 
@@ -46,15 +47,14 @@ export function PCPart(props) {
     }
 
     function createBuildTable() {
-      const foundPart = buildState.find((part) => part.Component === partName);
-    //   remove(ref(db, 'builds/' + "-NzW33V2HXY8G_UMMPav"));
-            // Delete the part from Firebase
-    
-            const handleDelete = () => {
-        let fb = foundPart.firebaseKey;
-        remove(ref(db, 'builds/' + currUser.uid + "/" +fb)); 
-        fetchBuilds();
-     }
+        const foundPart = buildState.find((part) => part.Component === partName);
+        
+        // Delete the part from Firebase
+        const handleDelete = () => {
+            let fb = foundPart.firebaseKey;
+            remove(ref(db, 'builds/' + currUser.uid + "/" +fb)); 
+            fetchBuilds();
+        }
      
       if (foundPart) {
         return (
