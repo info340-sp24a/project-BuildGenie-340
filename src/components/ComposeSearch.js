@@ -11,6 +11,7 @@ export function ComposeSearch(props) {
         <div>
             <form className='search-bar-button' onSubmit={handleSubmit}>
                 <div>
+                    <label htmlFor="search"></label>
                     <input
                         type="text"
                         id="search"
