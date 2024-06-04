@@ -62,8 +62,6 @@ export function BuildPage(props) {
         );
     }
 
-    let value = 0;
-
     useEffect(() => {
         if (isDataReady) {
             setDisplayedParts(
@@ -71,37 +69,8 @@ export function BuildPage(props) {
                     <PCPart key={part} partName={part} currUser={currUser} onDataReady={handleDataReady} />
                 ))
             );
-            waitForElm('.Price').then(() => {
-                let someValue = document.querySelectorAll(".Price");
-                console.log(someValue);
-                someValue.forEach((price) => {
-                    value += price
-                })
-            });
         }
     }, [isDataReady, currUser]);
-
-
-    // Helper function for getting prices once rendered
-    function waitForElm(selector) {
-        return new Promise(resolve => {
-            if (document.querySelectorAll(selector).length === partNames.length) {
-                return resolve(document.querySelector(selector));
-            }
-
-            const observer = new MutationObserver(mutations => {
-                if (document.querySelector(selector)) {
-                    resolve(document.querySelector(selector));
-                    observer.disconnect();
-                }
-            });
-
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        });
-    }
 
     const [userBuildsData, setUserBuildsData] = useState({});
 
@@ -124,7 +93,7 @@ export function BuildPage(props) {
         fetchBuilds();
     }, [db, currUser.uid]);
 
-    value = calcTotalPrice(userBuildsData)
+    let value = calcTotalPrice(userBuildsData)
 
     return (
         <div>
