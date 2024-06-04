@@ -51,7 +51,7 @@ import { getDatabase, ref, get, child} from 'firebase/database';
 
 const presetBuilds = [
     {
-        name: "Preset 1",
+        name: "High-End Build",
         parts: {
         'cpu': { Component: 'cpu', name: "Intel Core i9-11900K", price: 539.99 },
         'motherboard': { Component: 'motherboard', name: "ASUS ROG STRIX Z590-E", price: 379.99 },
@@ -65,7 +65,7 @@ const presetBuilds = [
         }
     },
     {
-        name: "Preset 2",
+        name: "Medium-End Build",
         parts: {
             "cpu": { Component: "cpu", name: "AMD Ryzen 7 5800X", price: 449.99 },
             "motherboard": { Component: "motherboard", name: "Asus ROG STRIX B650-A GAMING WIFI", price: 259.99, type: "" },
@@ -79,7 +79,7 @@ const presetBuilds = [
             }
     },
     {
-        name: "Preset 3",
+        name: "Low-End Build",
         parts: {
             "cpu": { Component: "cpu", name: "AMD Ryzen 5 5500", price: 88.99 },
             "motherboard": { Component: "motherboard", name: "MSI B550 GAMING GEN3", price: 99 },
