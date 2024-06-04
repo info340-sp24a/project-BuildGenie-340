@@ -45,7 +45,6 @@ const presetBuilds = [
             "case": { Component: "case", name: "Cooler Master MasterBox Q300L", price: 39.99 }
         }
     }
-    // Add other preset builds similarly if needed...
 ];
 
 export const calcTotalPrice = (parts) => {

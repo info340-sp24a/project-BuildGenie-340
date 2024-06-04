@@ -62,6 +62,8 @@ export function BuildPage(props) {
         );
     }
 
+    
+    
     useEffect(() => {
         if (isDataReady) {
             setDisplayedParts(
