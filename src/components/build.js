@@ -29,7 +29,7 @@ export function BuildPage(props) {
     const db = getDatabase();
 
     const [isDataReady, setIsDataReady] = useState(false);
-    
+
     const handleDataReady = () => {
       setIsDataReady(true);
     };

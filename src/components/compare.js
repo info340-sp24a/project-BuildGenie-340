@@ -51,7 +51,7 @@ export const calcTotalPrice = (parts) => {
     if (!parts) return "0.00";
     return Object.values(parts)
         .filter(part => part && part.price)
-        .reduce((total, part) => total + (part.price || 0), 0) 
+        .reduce((total, part) => total + (part.price || 0), 0)
         .toFixed(2);
 };
 

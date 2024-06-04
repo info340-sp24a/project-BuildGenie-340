@@ -41,7 +41,7 @@ export function ResultBox(props) {
             if (part.hasOwnProperty("")) {
                 delete part[""];
             }
-    
+
             get(buildsRef)
                 .then((snapshot) => {
                     let buildData = snapshot.val();
@@ -50,7 +50,7 @@ export function ResultBox(props) {
                     }
                     const buildKeys = Object.keys(buildData);
                     let partRef = null;
-    
+
                     // Check if build has part with the same component
                     for (const key of buildKeys) {
                         if (buildData[key].Component === part.Component) {
@@ -58,12 +58,12 @@ export function ResultBox(props) {
                             break;
                         }
                     }
-    
+
                     // If no existing part is found, create a new part reference
                     if (partRef === null) {
                         partRef = push(buildsRef);
                     }
-    
+
                     firebaseSet(partRef, part).then(() => {
                         const partAdded = part.name + " (" + part.Component + ")";
                         const message = (
